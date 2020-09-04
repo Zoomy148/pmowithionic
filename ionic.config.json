@@ -1,0 +1,7 @@
+{
+  "name": "pmo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
