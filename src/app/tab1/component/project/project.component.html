@@ -1,0 +1,19 @@
+       <ion-card *ngIf = "projectList">
+            <ion-item>
+              <ion-label style="font-size: 20px;">Projects
+              </ion-label><ion-button (click) = "onEditMode()"><ion-icon name="create-outline"></ion-icon></ion-button>
+            </ion-item>
+          <ion-card-content>
+            <div *ngIf = 'editMode'>
+              <ion-item>
+                <ion-input placeholder="Enter project" required = "true" [(ngModel)] = 'projectName'></ion-input>
+                <br>
+            </ion-item>
+              <ion-button (click) = "addProject()">Add</ion-button>
+            </div>
+            <ion-chip  outline color="primary" *ngFor = "let project of projectList; index as num"><ion-icon *ngIf = "editMode" (click) = "presentAlert(num)" name="close-circle-outline"></ion-icon>
+              <ion-label  [routerLink] = "['/tabs/tab1/users', userId, 'projects', num]">{{project.name}}</ion-label>
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+  

@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>
+      Сотрудники
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf = "user">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "6" offset-md = "3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{user.position}} {{user.group}}</ion-card-subtitle>
+            <ion-card-title>{{user.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label><ion-icon  name="call-outline"></ion-icon>
+                +7(999)999-99-99
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><ion-icon name="mail-open-outline"></ion-icon>
+                mail@mail.ru
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><ion-icon name="send-outline"></ion-icon>
+                @telegram_mail
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <strong>Примечание</strong>
+                <ion-text>
+                  <br>
+                  {{user.comments}}
+                </ion-text>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>        
+        <app-project></app-project>
+        <ion-card *ngIf = "user">
+          <ion-item>
+            <ion-label style="font-size: 20px;">Experience
+            </ion-label> <ion-button (click) = " editExperience()"><ion-icon name="create-outline"></ion-icon></ion-button>
+          </ion-item>
+          <ion-card-content>
+            <div *ngIf = 'editExp'>
+              <ion-item>
+                <ion-input placeholder="Enter experience" required = "true" [(ngModel)] = 'newExp'></ion-input>
+                <br>
+            </ion-item>
+              <ion-button (click) = "addExp()">Add</ion-button>
+            </div>
+            <ion-chip outline color="primary" *ngFor = "let experience of user.experience; index as num"><ion-icon *ngIf = "editExp" (click) = "presentAlert(num)" name="close-circle-outline"></ion-icon>
+              <ion-label>{{experience}}</ion-label>
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

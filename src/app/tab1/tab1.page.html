@@ -1,17 +1,34 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color = "primary">
     <ion-title>
-      Tab 1
+      Сотрудники по отделам
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "6" offset-md = "3">
+        <ion-card>
+          <ion-list>
+           <ion-card-header>Сотрудники</ion-card-header>
+            <ion-card-content>
+              <ion-item *ngFor = "let user of userTable;">
+                <ion-avatar slot = "start">
+                  <ion-img [src] = "user.img"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  {{user.name}} 
+                  <p>{{user.position}} {{user.group}}</p>
+                </ion-label> 
+                <ion-button [routerLink] = "['/tabs/tab1/users', user.id - 1]"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+              </ion-item>
+            </ion-card-content>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+

@@ -1,0 +1,120 @@
+{
+    "employees": [
+      {
+      "id": "1",
+      "name": "Dima Kruglov",
+      "img": "https://banner2.cleanpng.com/20180920/efk/kisspng-user-logo-information-service-design-5ba34f88a0c3a6.5907352915374293846585.jpg",
+      "group": "Web developer",
+      "position": "Junior",
+      "leader": "Ruslan",
+      "experience": ["Angular", "Bootstrap", "ngMaterial", "Ionic" ],
+      "note": "good reliable programmer",
+      "certificates": "coursera, udemy",
+      "comments": "blablablabla"
+      },
+      {
+      "id": "2",
+      "name": "Daniil Yarovoy",
+      "img": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+      "group": "Web developer",
+      "position": "Middle",
+      "leader": "Ruslan",
+      "experience": ["C++", "python", "pytorch"],
+      "note": "experienced programmer from intel",
+      "certificates": " ",
+      "comments": "blablablabla "
+      },
+      {
+        "id": "3",
+        "name": "Max Korzh",
+        "img": "https://banner2.cleanpng.com/20180920/efk/kisspng-user-logo-information-service-design-5ba34f88a0c3a6.5907352915374293846585.jpg",
+        "group": "HR",
+        "position": "Middle",
+        "leader": "John Snow",
+        "experience": ["jira", "gangsta rap"],
+        "note": " ",
+        "certificates": " ",
+        "comments": "blablablabla "
+        },
+        {
+          "id": "4",
+          "name": "George Bocharov",
+          "img": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+          "group": "BA",
+          "position": "Junior",
+          "leader": "Vladimir",
+          "experience": ["spring", "python", "java"],
+          "note": " advanced backend developer",
+          "certificates": " ",
+          "comments": " bla bla bla bla"
+          },
+          {
+            "id": "5",
+            "name": "Andrew Antonenko",
+            "img": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+            "group": "Web developer",
+            "position": "Middle",
+            "leader": "Maxim",
+            "experience": ["golang", "python"],
+            "note": "experienced mobile developer",
+            "certificates": " ",
+            "comments": "bla bla bla bla "
+            }
+    ],
+    "projects":[
+     {
+      "id": "1",
+      "name": "Sberbank",
+      "leader": "Ruslan",
+      "position": "Frontend developer",
+      "comments": "bla bla bla",
+      "part": 30
+     },
+     {
+      "id": "2",
+      "name": "RZHD",
+      "leader": "Mike",
+      "position": "Frontend developer",
+      "comments": "bla bla bla",
+      "part": 10
+     },
+     {
+      "id": "3",
+      "name": "Netcracker",
+      "leader": "Alex",
+      "position": "Frontend developer",
+      "comments": "bla bla bla",
+      "part": 60
+     }
+    ],
+    "vacancies": [
+      {
+        "id": "1",
+        "project_name": "MosGorTrans",
+        "responsible": "Darya Orlova",
+        "vacancy": "BackEnd developer",
+        "amount": "3",
+        "date": "13.10.2020 - 13.02.2021",
+        "status": "open"
+      },
+      {
+        "id": "2",
+        "project_name": "Almaz-Antey",
+        "responsible": "Sergey Korolyov",
+        "vacancy": "FrontEnd developer",
+        "amount": "2",
+        "date": "25.10.2020 - 25.10.2021",
+        "status": "open"
+      },
+      {
+        "id": "3",
+        "project_name": "Ozon",
+        "responsible": "Maria Kobanenko",
+        "vacancy": "HR",
+        "amount": "1",
+        "date": "13.10.2020 - 13.12.2020",
+        "status": "meeting"
+      }
+    ]
+  }
+  

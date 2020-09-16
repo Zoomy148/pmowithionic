@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>
+      Проекты
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf = "project">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "6" offset-md = "3">
+        <ion-card>
+        <ion-list>
+        <ion-item>
+          <ion-label>
+           <ion-item>
+            <h1>{{project.name}}</h1><ion-button slot="end">В коммерцию</ion-button>
+           </ion-item>
+            <h3><b>Заказчик:  </b>Владимир Сергеевич</h3>
+            <h3><b>Канал продаж:  </b>Владимир Сергеевич</h3>
+            <h3><b>План продаж:  </b></h3>
+            <h3><b>Планируемый срок:  </b>13.07.2021</h3>
+            <h3><b>Договорной срок:  </b>25.09.2021</h3>
+            <h3><b>Состояние проекта:</b></h3>
+            <ion-row>
+              <ion-col size-md = "12">
+                <ion-item>
+                  <ion-label>Этап</ion-label>
+                  <ion-select value="brown" okText="Выбрать" cancelText="Скрыть">
+                    <ion-select-option value="plan">Планирование</ion-select-option>
+                    <ion-select-option value="design">Дизайн</ion-select-option>
+                    <ion-select-option value="dev">Разработка</ion-select-option>
+                    <ion-select-option value="test">Тестирование</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Статус </ion-label>
+                  <ion-select value="brown" okText="Выбрать" cancelText="Скрыть">
+                    <ion-select-option value="alpha">alpha</ion-select-option>
+                    <ion-select-option value="beta">beta</ion-select-option>
+                    <ion-select-option value="release">release</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+           <h3><b>Руководитель проекта:   </b>{{project.leader}}</h3>
+           <h3><b>Промежуточные результаты:   </b><br>Все идёт по плану</h3>
+           <h3><b>Комментарии к пресейлу:   </b><br>Просим на 30000$ больше</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
