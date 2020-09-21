@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetInfoService } from '../services/get-info.service';
-import { Employee } from '../services/employee.model';
+
 
 @Component({
   selector: 'app-tab1',

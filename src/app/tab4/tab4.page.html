@@ -15,7 +15,6 @@
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
-
 <ion-content *ngIf = "slotToShow === 'presale'">
   <ion-grid>
     <ion-row>
@@ -24,7 +23,7 @@
           <ion-card-header>Пресейл</ion-card-header>
           <ion-card-content>
             <ion-list>
-              <ion-item button (click) = "goToDetails()" color = "success">
+              <ion-item button (click) = "goToDetails(0)" color = "success">
                 <ion-label>Направление 1</ion-label>
               </ion-item>  
               <ion-item>
@@ -50,7 +49,7 @@
             </ion-list>
             <hr>
             <ion-list>
-              <ion-item button (click) = "goToDetails()" color = "success">
+              <ion-item button (click) = "goToDetails(1)" color = "success">
                 <ion-label>Направление 2</ion-label>
               </ion-item>
               <ion-item>
@@ -80,7 +79,6 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
 <ion-content *ngIf = "slotToShow === 'commerce'">
   <ion-grid>
     <ion-row>

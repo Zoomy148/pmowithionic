@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>
+      Пресейл
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "6" offset-md = "3">
+        <ion-card>
+          <ion-card-content>
+            <ion-list>
+              <ion-item  color = "success">
+                <ion-label>Space X</ion-label>
+                <ion-button color ="primary" fill = "solid">В коммерцию</ion-button>
+              </ion-item>  
+              <ion-item>
+                <ion-label>Заказчик</ion-label>
+                <ion-note slot="end" color="primary"><p>Илон Маск</p></ion-note>
+              </ion-item>  
+              <ion-item>
+                <ion-label>Канал продаж</ion-label>
+                <ion-note slot="end" color="primary"><p>Партнёр</p></ion-note>
+              </ion-item> 
+              <ion-item>
+                <ion-label>План продаж</ion-label>
+                <ion-note slot="end" color="primary"><p>150000 $</p></ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>Планируемый срок</ion-label>
+                <ion-note slot="end" color="primary"><p>25.10.2021</p></ion-note>
+              </ion-item>   
+              <ion-item>
+                <ion-label>Договорной срок</ion-label>
+                <ion-note slot="end" color="primary"><p>25.12.2021</p></ion-note>
+              </ion-item> 
+              <ion-item>
+                <ion-label position="floating">Промежуточные результаты</ion-label>
+                <ion-textarea></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Примечания к пресейлу</ion-label>
+                <ion-textarea ></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label>Дата изменения</ion-label>
+                <ion-note slot="end" color="primary"><p>21.09.2020</p></ion-note>
+              </ion-item> 
+              <ion-item>
+                <ion-label>Этап</ion-label>
+                <ion-select value="dev" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="plan">Планирование</ion-select-option>
+                  <ion-select-option value="design">Дизайн</ion-select-option>
+                  <ion-select-option value="dev">Разработка</ion-select-option>
+                  <ion-select-option value="test">Тестирование</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Статус </ion-label>
+                <ion-select value="alpha" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="alpha">alpha</ion-select-option>
+                  <ion-select-option value="beta">beta</ion-select-option>
+                  <ion-select-option value="release">release</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <br>
+              <ion-button color = "success" expand = "block">Сохранить</ion-button>
+            </ion-list>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
