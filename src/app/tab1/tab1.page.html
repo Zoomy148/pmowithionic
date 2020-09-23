@@ -9,11 +9,12 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md = "6" offset-md = "3">
+        <ion-searchbar [(ngModel)] = "searchStr"></ion-searchbar>
         <ion-card>
           <ion-list>
            <ion-card-header>Сотрудники</ion-card-header>
             <ion-card-content>
-              <ion-item *ngFor = "let user of userTable;">
+              <ion-item *ngFor = "let user of userTable | search: searchStr">
                 <ion-avatar slot = "start">
                   <ion-img [src] = "user.img"></ion-img>
                 </ion-avatar>

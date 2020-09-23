@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import {MatExpansionModule} from '@angular/material/expansion';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { ChartsModule} from 'ng2-charts'
+import { SearchPipe } from '../tab1/services/search.pipe';
 
 
 
@@ -22,6 +23,9 @@ import { ChartsModule} from 'ng2-charts'
     ChartsModule
 
   ],
-  declarations: [Tab2Page]
+  declarations: [
+    Tab2Page,
+    SearchPipe
+  ]
 })
 export class Tab2PageModule {}

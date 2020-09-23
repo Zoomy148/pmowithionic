@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button (click) = "goBack()">
+        Назад
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        Аккаунт
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Коммерция</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "6" offset-md = "3">
+       
+            <ion-list>
+              <ion-item color = "success">
+                <ion-label>ОАО Тммед</ion-label>
+              </ion-item>  
+              <ion-item>
+                <ion-label>Разработка прототипа мобильного приложения</ion-label>
+              </ion-item>  
+              <ion-item>
+                <ion-label>Реквезиты договора</ion-label>
+                <ion-note slot="end" color="primary"><p style="font-size: 15px;">4011233453302</p></ion-note>
+              </ion-item>  
+              <ion-item>
+                <ion-label>Статус договора</ion-label>
+                <ion-select value="st2" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="st1">Статус 1</ion-select-option>
+                  <ion-select-option value="st2">Статус 2</ion-select-option>
+                  <ion-select-option value="st3">Статус 3</ion-select-option>
+                </ion-select>
+              </ion-item> 
+              <ion-item>
+                <ion-label>Дата изменения</ion-label>
+          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+              </ion-item> 
+              <ion-item>
+                <ion-label position="floating">Комментарии к проекту</ion-label>
+                <ion-textarea></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Проблемы проекта</ion-label>
+                <ion-textarea></ion-textarea>
+              </ion-item>
+              <ion-button expand = "full" color = "success">Сохранить</ion-button>
+            </ion-list>
+        
+            <ion-list>
+              <ion-item  color = "primary">
+                <ion-label>Этапы</ion-label>
+                <ion-button color ="success" fill = "solid"  (click) = "showModal()">Добавить этап</ion-button>
+              </ion-item>
+            </ion-list>
+            <mat-accordion>
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Этап 1
+                  </mat-panel-title>
+                  <mat-panel-description style="color: black;">
+                    Статус этапа: статус 1
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                  <ion-list>
+                    <ion-item color = "success">
+                      <ion-label> Статус акта</ion-label>
+                      <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Реквезиты</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">4011233453302</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Срок окончания этапа</ion-label>
+                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Дата подписания акта</ion-label>
+                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Сумма по этапу (с НДС)</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">15000 $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">5000 $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Итого</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">10000 $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Дата оплаты по договору</ion-label>
+                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Фактическая дата оплаты</ion-label>
+                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Комментарии этапа</ion-label>
+                      <ion-textarea></ion-textarea>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Проблемы этапа</ion-label>
+                      <ion-textarea></ion-textarea>
+                    </ion-item>
+                  </ion-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

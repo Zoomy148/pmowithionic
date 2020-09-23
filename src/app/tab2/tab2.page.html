@@ -10,19 +10,17 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md = "6" offset-md = "3">
-        <ion-card>
+        <ion-searchbar [(ngModel)] = "searchStr"></ion-searchbar>
           <ion-list>
-            <ion-card-header>Занятость</ion-card-header>
-            <ion-card-content>
-              <ion-item *ngFor = "let user of users">
+              <ion-item *ngFor = "let user of users | search: searchStr">
                 <ion-label>
-
                   <mat-accordion>
                     <mat-expansion-panel hideToggle>
-                      <mat-expansion-panel-header>
+                      <mat-expansion-panel-header style="height: 100px;">
                         <mat-panel-title>
                           <ion-label>
-                            {{user.name}} 
+                            <p style="color: black; font-size: 20px;">{{user.name}}</p>
+                            <p> {{user.position}} {{user.group}}</p>
                             <p>Месячная занятость: 100%</p>
                           </ion-label> 
                         </mat-panel-title>
@@ -59,9 +57,7 @@
                   </mat-accordion>
                 </ion-label>
               </ion-item>
-            </ion-card-content>
           </ion-list>
-        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -7,7 +7,7 @@ import { GetInfoService } from '../services/get-info.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  
+  searchStr = '';
   public barChartLabels = [];
   public barChartType = 'doughnut';
   public barChartLegend = true;

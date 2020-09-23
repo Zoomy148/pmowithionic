@@ -9,6 +9,7 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { UserpageComponent } from './component/userpage/userpage.component';
 import { ProjectComponent } from './component/project/project.component';
 import { ProjectdetailsComponent } from './component/projectdetails/projectdetails.component';
+import { SearchPipe } from './services/search.pipe';
 
 @NgModule({
   imports: [
@@ -16,13 +17,15 @@ import { ProjectdetailsComponent } from './component/projectdetails/projectdetai
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    
   ],
   declarations: [
     Tab1Page,
     UserpageComponent,
     ProjectComponent,
-    ProjectdetailsComponent
+    ProjectdetailsComponent,
+    SearchPipe
   ]
 })
 export class Tab1PageModule {}

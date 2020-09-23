@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar color = "primary">
-    <ion-title>
-      Пресейл
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click) = "goBack()">
+        Назад
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        Аккаунт
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Пресейл</ion-title>
   </ion-toolbar>
 </ion-header>
 

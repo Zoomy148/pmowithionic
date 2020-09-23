@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color = "primary">
+      <ion-title>Добавить этап</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click) = "close()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-content>
+                        <ion-list>
+                            <ion-item>
+                                <ion-label position="floating">Имя этапа</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.name"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Статус этапа</ion-label>
+                                <ion-select [(ngModel)] = "stage.stage_status" value="status1">
+                                  <ion-select-option value="status1">Статус 1</ion-select-option>
+                                  <ion-select-option value="status2">Статус 2</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Статус акта</ion-label>
+                                <ion-select [(ngModel)] = "stage.act_status" value="rassmotr">
+                                  <ion-select-option value="На рассмотрении">На рассмотрении</ion-select-option>
+                                  <ion-select-option value="Подписан">Подписан</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">Реквезиты</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.requisites"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Срок окончания этапа</ion-label>
+                                <ion-datetime [(ngModel)] = "stage.stage_deadline" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                            </ion-item> 
+                            <ion-item>
+                                <ion-label>Дата подписания акта</ion-label>
+                                <ion-datetime [(ngModel)] = "stage.signing_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                            </ion-item> 
+                            <ion-item>
+                                <ion-label position="floating">Сумма по этапу (с НДС)</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.sum_of_stage"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">Сумма выплат субподрядчикам</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.sum_subcontractor"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">Итого</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.total"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Дата оплаты по договору</ion-label>
+                                <ion-datetime [(ngModel)] = "stage.contract_payment_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Фактическая дата оплаты</ion-label>
+                                <ion-datetime [(ngModel)] = "stage.actual_payment_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">Комментарии этапа</ion-label>
+                                <ion-textarea [(ngModel)] ="stage.stage_comments"></ion-textarea>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">Проблемы этапа</ion-label>
+                                <ion-textarea [(ngModel)] = "stage.stage_problems"></ion-textarea>
+                            </ion-item>
+                           </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+  </ion-content>

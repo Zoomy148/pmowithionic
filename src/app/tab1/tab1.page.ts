@@ -8,7 +8,7 @@ import { GetInfoService } from '../services/get-info.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-
+  searchStr = '';
   userTable = [];
   constructor(private getUser : GetInfoService) {}
 
@@ -19,7 +19,6 @@ export class Tab1Page implements OnInit {
     });
   }
 
-  goToUser(id: number){
-    
-  }
+  goToUser(id: number){}
+  
 }

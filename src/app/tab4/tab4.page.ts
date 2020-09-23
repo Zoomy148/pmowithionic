@@ -18,5 +18,10 @@ export class Tab4Page implements OnInit {
   goToDetails(num: number){
     this.router.navigate(['/tabs/tab4/presale/' + num]);
   }
+
+  goToCommercePage(num: number){
+    this.router.navigate(['/tabs/tab4/commerce/' + num]);
+  }
+
   ngOnInit() {}
 }
