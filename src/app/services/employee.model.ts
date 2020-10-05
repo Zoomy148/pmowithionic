@@ -11,7 +11,7 @@ export class Employee{
     public comments: string;
 
     constructor(id: number, name: string, img: string, group: string, position: string, leader: string,
-         experience: string, note: string, certificates: string, comments: string){
+                experience: string, note: string, certificates: string, comments: string){
         this.id = id;
         this.name = name;
         this.img = img;

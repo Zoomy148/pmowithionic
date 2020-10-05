@@ -10,6 +10,18 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./userpage.component.scss'],
 })
 export class UserpageComponent implements OnInit {
+  public barChartLabels = [];
+  public barChartType = 'doughnut';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: []}
+  ];
+  public barChartOptions:any = {
+    legend: {position: 'left'}
+  }
+  hours = [];
+  projects: [];
+  users: [];
   user: any;
   newExp: string = '';
   editExp: boolean = false;
@@ -20,9 +32,24 @@ export class UserpageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.getUserService.search().subscribe(data =>{
+        console.log(data);
         this.user = data[+params.get('userId')];
       })
-    }) 
+    })
+    this.getUserService.search().subscribe((userData) =>
+    {
+      this.users = userData;
+    });
+    this.getUserService.searchProject().subscribe(projectData =>{
+      this.projects = projectData;
+      this.barChartLabels = this.projects.map((el) => {
+        return el['name'];
+      })
+      this.hours = this.projects.map((el) => {
+        return el['part'];
+      })
+      this.barChartData = [{data: [parseInt(this.hours[0]), parseInt(this.hours[1]), parseInt(this.hours[2])]}];
+    })
   }
   editExperience(){
     this.editExp = !this.editExp;

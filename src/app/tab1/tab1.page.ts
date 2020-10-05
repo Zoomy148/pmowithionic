@@ -10,7 +10,7 @@ import { GetInfoService } from '../services/get-info.service';
 export class Tab1Page implements OnInit {
   searchStr = '';
   userTable = [];
-  constructor(private getUser : GetInfoService) {}
+  constructor(private getUser: GetInfoService) {}
 
   ngOnInit(){
     this.getUser.search().subscribe((data) => 

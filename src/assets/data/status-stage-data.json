@@ -1,0 +1,14 @@
+[
+  {
+    "title" : "Этап 1",
+    "stageStatus" : "Статус этапа: статус 1",
+    "reqi": "4011233453302",
+    "sum1": "15000",
+    "sum2": "5000",
+    "sum3": "10000",
+    "comment": ["C","python"],
+    "problem": ["Какие то проблемы"],
+    "certificates": "string",
+    "comments": "string"
+  }
+]

@@ -59,7 +59,7 @@
                 <ion-button color ="success" fill = "solid"  (click) = "showModal()">Добавить этап</ion-button>
               </ion-item>
             </ion-list>
-            <mat-accordion>
+            <mat-accordion >
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
@@ -69,14 +69,14 @@
                     Статус этапа: статус 1
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                  <ion-list>
+                  <ion-list *ngFor="let row of stageData">
                     <ion-item color = "success">
                       <ion-label> Статус акта</ion-label>
                       <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Реквезиты</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">4011233453302</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.reqi}}</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Срок окончания этапа</ion-label>

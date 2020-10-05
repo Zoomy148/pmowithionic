@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from './modalPage.component';
+import {GetInfoService} from '../../services/get-info.service';
 
 @Component({
   selector: 'app-commerce',
@@ -9,15 +10,17 @@ import { ModalPage } from './modalPage.component';
   styleUrls: ['./commerce.component.scss'],
 })
 export class CommerceComponent implements OnInit {
- 
-  constructor(private location: Location, public modalController: ModalController) { }
+  stageData = [];
+  constructor(private location: Location, public modalController: ModalController, public dataService: GetInfoService) { }
   ngOnInit() {
   }
 
   goBack(){
     this.location.back();
   }
-
+  getStagedata(){
+    this.stageData = this.dataService.searchStage();
+  }
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,

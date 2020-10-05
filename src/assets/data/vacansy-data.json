@@ -1,0 +1,20 @@
+[
+  {
+    "id": "48",
+    "project_name": "PMO",
+    "responsible": "Что это?",
+    "vacancy": "Вакансия)",
+    "amount": "Бабки?",
+    "date": "01.01.2020",
+    "status": "Открыта"
+  },
+  {
+    "id": "44",
+    "project_name": "КОНТЕР",
+    "responsible": "Гейб",
+    "vacancy": "Разработчик",
+    "amount": "Бабки?",
+    "date": "01.01.2020",
+    "status": "Открыта"
+  }
+]

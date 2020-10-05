@@ -15,19 +15,26 @@ export class GetInfoService {
     projectsList: any;
     userTable: any;
     vacancyList: any;
+    stageList: any;
 
     search(){
-      this.userTable = this.http.get("http://localhost:3000/employees");   
+      this.userTable = this.http.get('assets/data/employee-data.json');
+      console.log(this.http.get('assets/data/employee-data.json'));
       return this.userTable;
+
     }
 
     searchProject(){
-      this.projectsList = this.httpProject.get("http://localhost:3000/projects");
+      this.projectsList = this.httpProject.get('assets/data/project-data.json');
       return this.projectsList;   
     }
 
     searchVacancy(){
-      this.vacancyList = this.httpVacancy.get("http://localhost:3000/vacancies");
+      this.vacancyList = this.httpVacancy.get('assets/data/vacansy-data.json');
       return this.vacancyList;
+    }
+    searchStage(){
+        this.stageList = this.httpVacancy.get('assets/data/status-stage-data.json');
+        return this.vacancyList;
     }
 }

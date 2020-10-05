@@ -1,0 +1,26 @@
+[
+  {
+    "id" : "1",
+    "name" : "Филатов",
+    "img": "string",
+    "group": "string",
+    "position": "string",
+    "leader": "string",
+    "experience": ["C","python"],
+    "note": "string",
+    "certificates": "string",
+    "comments": "string"
+  },
+  {
+    "id" : "2",
+    "name" : "Скляров",
+    "img": "string",
+    "group": "Стажер",
+    "position": "Стажер",
+    "leader": "Стажер",
+    "experience": ["TypeScript","NodeJs"],
+    "note": "123",
+    "certificates": "есть диплои об окончании школы (без 3) ",
+    "comments": "string"
+  }
+]

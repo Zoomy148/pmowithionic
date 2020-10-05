@@ -18,8 +18,8 @@ export class ProjectComponent implements OnInit {
     id: '',
     name: '',
     leader: '',
-    position:'',
-    comments:'',
+    position: '',
+    comments: '',
     part: ''
   };
   constructor(private getProjectsService: GetInfoService,

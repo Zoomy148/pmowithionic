@@ -7,7 +7,7 @@
 </ion-header>
 <ion-toolbar>
   <ion-segment (ionChange)="segmentChanged($event)" style="width: 90%;">
-    <ion-segment-button value="new_vacancy">
+    <ion-segment-button value="new_vacancy" >
       <ion-label>Вакансии</ion-label>
     </ion-segment-button>
     <ion-segment-button value="free_guys">
@@ -20,42 +20,30 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md = "8" offset-md = "2">
-        <ion-card>
-          <ion-list>
-            <ion-card-header>
-              <h1>Вакансии к закрытию</h1><ion-button>Создать заявку</ion-button>
-            </ion-card-header>
-            <ion-card-content *ngFor = "let vacancy of vacancyList">
-              <ion-item>
-                <ion-label>
-                  №: {{vacancy.id}}
-                  <br>
-                  Проект: {{vacancy.project_name}}
-                  <br>
-                  Контактное лицо: {{vacancy.responsible}}
-                  <br>
-                  Вакансия: {{vacancy.vacancy}}
-                  <br>
-                  Количество: {{vacancy.amount}}
-                  <br>
-                  Срок работ: {{vacancy.date}}
-                </ion-label>
-              </ion-item>
-              <ion-row>
-                <ion-col size-md = "5">
-                  <ion-item>
-                    <ion-label>Статус заявки</ion-label>
-                    <ion-select value="{{vacancy.status}}" okText="Выбрать" cancelText="Скрыть">
-                      <ion-select-option value="open">Открыта</ion-select-option>
-                      <ion-select-option value="meeting">Назначена встреча</ion-select-option>
-                      <ion-select-option value="closed">Закрыта</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </ion-card-content>
-          </ion-list>
-        </ion-card>
+        <ion-list-header>
+          Открытые вакансии
+        </ion-list-header>
+              <ion-list *ngFor = "let vacancy of vacancyList" >
+                <ion-item  >
+                  <ion-label>
+                    <h2>Проект: {{vacancy.project_name}} </h2>
+                    <h3>Контактное лицо: {{vacancy.responsible}}</h3>
+                    <h3> Вакансия: {{vacancy.vacancy}}</h3>
+                  </ion-label>
+                </ion-item>
+                <ion-row>
+                  <ion-col size-md = "5">
+                    <ion-item>
+                      <ion-label>Статус заявки</ion-label>
+                      <ion-select value="{{vacancy.status}}" okText="Выбрать" cancelText="Скрыть">
+                        <ion-select-option value="open">Открыта</ion-select-option>
+                        <ion-select-option value="meeting">Назначена встреча</ion-select-option>
+                        <ion-select-option value="closed">Закрыта</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -65,39 +53,53 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md = "8" offset-md = "2">
-        <ion-card>
-          <ion-card-header><h1>Освобождающиеся сотрудники</h1></ion-card-header>
-          <ion-card-content>
-            <ion-list>
+        <ion-list-header>
+          Открытые вакансии
+        </ion-list-header>
+        <ion-list  >
+          <ion-item  >
+            <ion-label>
+              <h2>ФИО: Скляров Константин </h2>
+              <h3>Контактное лицо: Руслан</h3>
+              <h3> Должность: Разработчик</h3>
+              <h3> Свободен: На все 100%</h3>
+            </ion-label>
+          </ion-item>
+          <ion-row>
+            <ion-col size-md = "5">
               <ion-item>
-                №: 1
-                <br>
-                ФИО: Иванов П.С.
-                <br>
-                Контактное лицо: Чупраков Ф.М.
-                <br>
-                Должность: BE-разработчик
-                <br>
-                С какого числа свободен: 24.11.2020
-                <br>
-                Свободное время: 100%
-                <br>
+                <ion-label>Статус заявки</ion-label>
+                <ion-select value="" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="open">Открыта</ion-select-option>
+                  <ion-select-option value="meeting">Назначена встреча</ion-select-option>
+                  <ion-select-option value="closed">Закрыта</ion-select-option>
+                </ion-select>
               </ion-item>
-              <ion-row>
-                <ion-col size-md = "5">
-                  <ion-item>
-                    <ion-label>Статус заявки</ion-label>
-                    <ion-select value="brown" okText="Выбрать" cancelText="Скрыть">
-                      <ion-select-option value="plan">Открыта</ion-select-option>
-                      <ion-select-option value="design">Назначена встреча</ion-select-option>
-                      <ion-select-option value="dev">Закрыта</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+        <ion-list  >
+          <ion-item  >
+            <ion-label>
+              <h2>ФИО: Скляров Константин </h2>
+              <h3>Контактное лицо: Руслан</h3>
+              <h3> Должность: Разработчик</h3>
+              <h3> Свободен: На все 100%</h3>
+            </ion-label>
+          </ion-item>
+          <ion-row>
+            <ion-col size-md = "5">
+              <ion-item>
+                <ion-label>Статус заявки</ion-label>
+                <ion-select value="" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="open">Открыта</ion-select-option>
+                  <ion-select-option value="meeting">Назначена встреча</ion-select-option>
+                  <ion-select-option value="closed">Закрыта</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
