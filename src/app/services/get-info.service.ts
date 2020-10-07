@@ -10,7 +10,8 @@ export class GetInfoService {
 
     constructor(private http: HttpClient,
                 private httpProject: HttpClient,
-                private httpVacancy: HttpClient) {
+                private httpVacancy: HttpClient,
+                private httpStage: HttpClient) {
     }
     projectsList: any;
     userTable: any;
@@ -26,7 +27,7 @@ export class GetInfoService {
 
     searchProject(){
       this.projectsList = this.httpProject.get('assets/data/project-data.json');
-      return this.projectsList;   
+      return this.projectsList;
     }
 
     searchVacancy(){
@@ -34,7 +35,7 @@ export class GetInfoService {
       return this.vacancyList;
     }
     searchStage(){
-        this.stageList = this.httpVacancy.get('assets/data/status-stage-data.json');
-        return this.vacancyList;
+        this.stageList = this.httpStage.get('assets/data/status-stage-data.json');
+        return this.stageList;
     }
 }

@@ -10,5 +10,17 @@
     "problem": ["Какие то проблемы"],
     "certificates": "string",
     "comments": "string"
+  },
+  {
+    "title" : "Этап 2",
+    "stageStatus" : "Статус этапа: статус 2",
+    "reqi": "4011233453302",
+    "sum1": "13666",
+    "sum2": "1370",
+    "sum3": "1",
+    "comment": ["C","python"],
+    "problem": ["Какие то проблемы"],
+    "certificates": "string",
+    "comments": "string"
   }
 ]

@@ -60,16 +60,16 @@
               </ion-item>
             </ion-list>
             <mat-accordion >
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+              <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
+                <mat-expansion-panel-header >
                   <mat-panel-title>
-                    Этап 1
+                    {{row.title}}
                   </mat-panel-title>
                   <mat-panel-description style="color: black;">
-                    Статус этапа: статус 1
+                    {{row.stageStatus}}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                  <ion-list *ngFor="let row of stageData">
+                  <ion-list >
                     <ion-item color = "success">
                       <ion-label> Статус акта</ion-label>
                       <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
@@ -88,15 +88,15 @@
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма по этапу (с НДС)</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">15000 $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum1}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">5000 $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum2}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Итого</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">10000 $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum3}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Дата оплаты по договору</ion-label>
@@ -112,7 +112,7 @@
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Проблемы этапа</ion-label>
-                      <ion-textarea></ion-textarea>
+                      <ion-textarea>{{row.problem}}</ion-textarea>
                     </ion-item>
                   </ion-list>
               </mat-expansion-panel>

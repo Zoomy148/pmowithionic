@@ -10,17 +10,26 @@ import {GetInfoService} from '../../services/get-info.service';
   styleUrls: ['./commerce.component.scss'],
 })
 export class CommerceComponent implements OnInit {
-  stageData = [];
+  stageData: any;
+  projectData: any;
   constructor(private location: Location, public modalController: ModalController, public dataService: GetInfoService) { }
   ngOnInit() {
+    this.dataService.searchStage().subscribe((datas) =>
+    {
+      this.stageData = datas;
+      console.log(this.stageData);
+    });
+    this.dataService.searchProject().subscribe((data) =>
+    {
+      this.projectData = data;
+    });
   }
 
   goBack(){
     this.location.back();
   }
-  getStagedata(){
-    this.stageData = this.dataService.searchStage();
-  }
+
+
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,
