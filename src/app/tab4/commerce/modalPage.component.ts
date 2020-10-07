@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'modal-page',
@@ -21,9 +23,12 @@ export class ModalPage {
         stage_comments: '',
         stage_problems: ''
     }
-    
-    constructor(private mdlCntrl: ModalController) {}
+    url = 'assets/data/status-stage-data.json';
+    constructor(private mdlCntrl: ModalController,
+                public http: HttpClient,
+                public router: Router) {}
     async close(){
         await this.mdlCntrl.dismiss(this.stage);
     }
+
 }

@@ -2,7 +2,7 @@
   {
     "id" : "1",
     "name" : "Филатов",
-    "img": "string",
+    "img": "https://cs9.pikabu.ru/post_img/2017/03/05/5/1488697405130264212.jpg",
     "group": "string",
     "position": "string",
     "leader": "string",
@@ -14,7 +14,7 @@
   {
     "id" : "2",
     "name" : "Скляров",
-    "img": "string",
+    "img": "https://lh3.googleusercontent.com/proxy/ebsDo6OEZ-mYtngkz4ynxRba0IPUM9q08pFb77vFFOYihAQ49s48FpPjifWNXJjEQzR6_n3o",
     "group": "Стажер",
     "position": "Стажер",
     "leader": "Стажер",

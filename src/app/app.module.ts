@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component'
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {enterAnimation} from './animation/nav-animation';
 
 
 
@@ -24,7 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 ],
 
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, IonicModule.forRoot({
+    navAnimation: enterAnimation
+  }),
+    AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,

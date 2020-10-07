@@ -11,6 +11,7 @@ export class Tab3Page implements OnInit {
 
   slotToShow: string = 'new_vacancy'
   vacancyList: any;
+  userList: any;
   constructor(private getVacancyService: GetInfoService){}
   
   segmentChanged(ev: any){
@@ -24,5 +25,10 @@ export class Tab3Page implements OnInit {
       this.vacancyList = data;
       console.log(this.vacancyList);
     });
+    this.getVacancyService.search().subscribe((data) =>
+    {
+      this.userList = data;
+    });
   }
+
 }

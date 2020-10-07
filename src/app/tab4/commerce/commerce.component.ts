@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
-import { ModalController } from '@ionic/angular';
+import { ModalController , } from '@ionic/angular';
 import { ModalPage } from './modalPage.component';
 import {GetInfoService} from '../../services/get-info.service';
 
@@ -12,7 +12,10 @@ import {GetInfoService} from '../../services/get-info.service';
 export class CommerceComponent implements OnInit {
   stageData: any;
   projectData: any;
-  constructor(private location: Location, public modalController: ModalController, public dataService: GetInfoService) { }
+  constructor(private location: Location,
+              public modalController: ModalController,
+              public dataService: GetInfoService,
+              ) { }
   ngOnInit() {
     this.dataService.searchStage().subscribe((datas) =>
     {

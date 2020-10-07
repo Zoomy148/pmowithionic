@@ -10,22 +10,22 @@
 </ion-header>
 
 <ion-toolbar>
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="presale">
+  <ion-segment  (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="presale" (click)="toggleAnimation()">
       <ion-label>Пресейл</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="commerce">
+    <ion-segment-button value="commerce" (click)="toggleAnimation()">
       <ion-label>Коммерция</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
 
-<ion-content *ngIf = "slotToShow === 'presale'">
+<ion-content  *ngIf = "slotToShow === 'presale'" >
   <ion-grid>
     <ion-row>
       <ion-col size-md ="6" offset-md = "3">
         <ion-searchbar></ion-searchbar>
-        <ion-card>
+        <ion-card #presale>
           <ion-card-header>Пресейл</ion-card-header>
           <ion-card-content>
             <ion-list>
@@ -86,12 +86,12 @@
   </ion-grid>
 </ion-content>
 
-<ion-content *ngIf = "slotToShow === 'commerce'">
+<ion-content *ngIf = "slotToShow === 'commerce'" >
   <ion-grid>
     <ion-row>
       <ion-col size-md ="6" offset-md = "3">
-        <ion-searchbar></ion-searchbar>
-        <ion-card *ngFor="let row of projectData">
+        <ion-searchbar [(ngModel)] = "searchStr"></ion-searchbar>
+        <ion-card *ngFor="let row of projectData | search: searchStr">
           <ion-card-header>Коммерция</ion-card-header>
           <ion-card-content>
             <ion-list>
@@ -113,7 +113,8 @@
               <ion-item>
                 <ion-label>Статус этапа</ion-label>
                 <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
-              </ion-item>  
+              </ion-item>
+
               <ion-button expand = "full" color = "primary">Этап коммерции</ion-button>
             </ion-list>
             <hr>

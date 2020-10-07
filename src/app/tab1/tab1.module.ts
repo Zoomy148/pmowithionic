@@ -13,22 +13,25 @@ import { SearchPipe } from './services/search.pipe';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ExploreContainerComponentModule,
-    Tab1PageRoutingModule,
-    ChartsModule,
-    MatExpansionModule
-    
-  ],
-  declarations: [
-    Tab1Page,
-    UserpageComponent,
-    ProjectComponent,
-    ProjectdetailsComponent,
-    SearchPipe
-  ]
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        ExploreContainerComponentModule,
+        Tab1PageRoutingModule,
+        ChartsModule,
+        MatExpansionModule
+
+    ],
+    exports: [
+        SearchPipe
+    ],
+    declarations: [
+        Tab1Page,
+        UserpageComponent,
+        ProjectComponent,
+        ProjectdetailsComponent,
+        SearchPipe
+    ]
 })
 export class Tab1PageModule {}
