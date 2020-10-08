@@ -8,13 +8,12 @@
     <ion-title>Проекты</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-toolbar>
   <ion-segment  (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="presale" (click)="toggleAnimation()">
+    <ion-segment-button value="presale">
       <ion-label>Пресейл</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="commerce" (click)="toggleAnimation()">
+    <ion-segment-button value="commerce">
       <ion-label>Коммерция</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -24,59 +23,33 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md ="6" offset-md = "3">
-        <ion-searchbar></ion-searchbar>
-        <ion-card #presale>
+        <ion-searchbar ></ion-searchbar>
+        <ion-card #presale *ngFor="let row of presaleProjectData ">
           <ion-card-header>Пресейл</ion-card-header>
           <ion-card-content>
             <ion-list>
-              <ion-item button (click) = "goToDetails(0)" color = "success">
-                <ion-label>Направление 1</ion-label>
+              <ion-item button (click) = "goToDetails(row.id)" color = "success">
+                <ion-label>{{row.direction}}</ion-label>
               </ion-item>  
               <ion-item>
                 <ion-label>Заказчик</ion-label>
-                <ion-note slot="end" color="primary"><p>Илон Маск</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{row.customer}}</p></ion-note>
               </ion-item>  
               <ion-item>
                 <ion-label>Проект</ion-label>
-                <ion-note slot="end" color="primary"><p>Деловые линии</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{row.project}}</p></ion-note>
               </ion-item>  
               <ion-item>
                 <ion-label>Ответственный за пресейл</ion-label>
-                <ion-note slot="end" color="primary"><p>Иванов И.И.</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
               </ion-item> 
               <ion-item>
                 <ion-label>Этап пресейла</ion-label>
-                <ion-note slot="end" color="primary"><p>Этап 1</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{row.stage}}</p></ion-note>
               </ion-item> 
               <ion-item>
                 <ion-label>Статус</ion-label>
-                <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
-              </ion-item>  
-            </ion-list>
-            <hr>
-            <ion-list>
-              <ion-item button (click) = "goToDetails(1)" color = "success">
-                <ion-label>Направление 2</ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-label>Заказчик</ion-label>
-                <ion-note slot="end" color="primary"><p>Илон Маск</p></ion-note>
-              </ion-item>  
-              <ion-item>
-                <ion-label>Проект</ion-label>
-                <ion-note slot="end" color="primary"><p>Деловые линии</p></ion-note>
-              </ion-item>  
-              <ion-item>
-                <ion-label>Ответственный за пресейл</ion-label>
-                <ion-note slot="end" color="primary"><p>Иванов И.И.</p></ion-note>
-              </ion-item> 
-              <ion-item>
-                <ion-label>Этап пресейла</ion-label>
-                <ion-note slot="end" color="primary"><p>Этап 1</p></ion-note>
-              </ion-item> 
-              <ion-item>
-                <ion-label>Статус</ion-label>
-                <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{row.status}}</p></ion-note>
               </ion-item>  
             </ion-list>
           </ion-card-content>
@@ -85,7 +58,6 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
 <ion-content *ngIf = "slotToShow === 'commerce'" >
   <ion-grid>
     <ion-row>

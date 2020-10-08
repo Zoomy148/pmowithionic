@@ -13,8 +13,10 @@ import { AnimationController , Animation} from '@ionic/angular';
 export class Tab4Page implements OnInit, AfterViewInit {
   @ViewChild('presale', {static: false}) presale: ElementRef;
   searchStr = '';
+
   isPlaying = false;
   projectData: any;
+  presaleProjectData: any;
   slotToShow: string = 'presale';
   anim: Animation;
   constructor(private router: Router ,
@@ -35,25 +37,25 @@ export class Tab4Page implements OnInit, AfterViewInit {
     this.router.navigate(['/tabs/tab4/commerce/' + num]);
   }
   ngAfterViewInit() {
-    this.anim = this.animationCtrl.create('myanim');
-    this.anim
-        .addElement(this.presale.nativeElement)
-        .duration(1500)
-        .easing('ease-out')
-        .iterations(1)
-        .fromTo('transform', 'translateX(0px)', 'translateX(500px)')
-        .fromTo('opacity', 1, 0);
+    // this.anim = this.animationCtrl.create('myanim');
+    // this.anim
+    //     .addElement(this.presale.nativeElement)
+    //     .duration(1500)
+    //     .easing('ease-out')
+    //     .iterations(1)
+    //     .fromTo('transform', 'translateX(0px)', 'translateX(500px)')
+    //     .fromTo('opacity', 1, 0);
   }
-  toggleAnimation(){
-    if ( this.isPlaying){
-      this.anim.pause()
-    }
-    else {
-      this.anim.play()
-    }
-    this.isPlaying = !this.isPlaying;
-    console.log(this.isPlaying)
-  }
+  // toggleAnimation(){
+  //   if ( this.isPlaying){
+  //     this.anim.pause()
+  //   }
+  //   else {
+  //     this.anim.play()
+  //   }
+  //   this.isPlaying = !this.isPlaying;
+  //   console.log(this.isPlaying)
+  // }
 
 
   ngOnInit() {
@@ -61,5 +63,10 @@ export class Tab4Page implements OnInit, AfterViewInit {
    {
      this.projectData = data;
    });
+
+    this.dataService.searchPresaleProject().subscribe((data) =>
+    {
+      this.presaleProjectData = data;
+    });
   }
 }

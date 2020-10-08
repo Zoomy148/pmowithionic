@@ -11,12 +11,14 @@ export class GetInfoService {
     constructor(private http: HttpClient,
                 private httpProject: HttpClient,
                 private httpVacancy: HttpClient,
-                private httpStage: HttpClient) {
+                private httpStage: HttpClient,
+                private httpPresaleProject: HttpClient) {
     }
     projectsList: any;
     userTable: any;
     vacancyList: any;
     stageList: any;
+    PresaleProjectList: any;
 
     search(){
       this.userTable = this.http.get('assets/data/employee-data.json');
@@ -37,5 +39,9 @@ export class GetInfoService {
     searchStage(){
         this.stageList = this.httpStage.get('assets/data/status-stage-data.json');
         return this.stageList;
+    }
+    searchPresaleProject(){
+        this.projectsList = this.httpPresaleProject.get('assets/data/presale-project-data.json');
+        return this.projectsList;
     }
 }

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "22",
+    "direction": "Направление 1 ",
+    "customer": "Илон",
+    "name":"SpaceX",
+    "leader": "Иванов",
+    "stage": "Этап 1 ",
+    "status": "Статус 1",
+    "channel": "Партнёр",
+    "plan": "1400000$",
+    "planTerm": "25.10.2021",
+    "deadline": "25.12.2021",
+    "changetime": "21.09.2020"
+  },
+  {
+    "id": "33",
+    "direction": "Направление 2 ",
+    "customer": "Валера",
+    "project":"ККСО",
+    "leader": "Петорв",
+    "stage": "Этап 2 ",
+    "status": "Статус 2",
+    "channel": "Партнёр",
+    "plan": "12$",
+    "planTerm": "25.10.2021",
+    "deadline": "25.12.2021",
+    "changetime": "21.09.2020"
+  }
+]
