@@ -9,7 +9,8 @@
     "experience": ["C","python"],
     "note": "string",
     "certificates": "string",
-    "comments": "string"
+    "comments": "string",
+    "free": 1
   },
   {
     "id" : "2",
@@ -21,6 +22,22 @@
     "experience": ["TypeScript","NodeJs"],
     "note": "123",
     "certificates": "есть диплои об окончании школы (без 3) ",
-    "comments": "string"
+    "comments": "string",
+    "free": 1
+  },
+  {
+    "id" : "3",
+    "name" : "Никитин",
+    "img": "https://vignette.wikia.nocookie.net/newmarvel/images/5/52/Wolverine_%28The_Good_men%29.jpg/revision/latest?cb=20120617162052",
+    "group": "Стажер",
+    "position": "Стажер",
+    "leader": "Тютчев Евгений ",
+    "experience": ["TypeScript","NodeJs"],
+    "note": "123",
+    "certificates": "есть диплои об окончании школы (без 3) ",
+    "comments": "string",
+    "busy": "37%",
+    "free": 0
   }
+
 ]

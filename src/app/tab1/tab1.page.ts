@@ -13,12 +13,12 @@ export class Tab1Page implements OnInit {
   constructor(private getUser: GetInfoService) {}
 
   ngOnInit(){
-    this.getUser.search().subscribe((data) => 
+    this.getUser.search().subscribe((data) =>
     {
-      this.userTable = data;
+      this.userTable = data.filter(n => [1].includes(n.free));
     });
+
   }
 
   goToUser(id: number){}
-  
 }

@@ -9,25 +9,24 @@ import { GetInfoService } from '../services/get-info.service';
 })
 export class Tab3Page implements OnInit {
 
-  slotToShow: string = 'new_vacancy'
+  slotToShow: string = 'new_vacancy';
   vacancyList: any;
   userList: any;
   constructor(private getVacancyService: GetInfoService){}
-  
   segmentChanged(ev: any){
     console.log(ev.detail.value);
     this.slotToShow = ev.detail.value;
   }
 
   ngOnInit(){
-    this.getVacancyService.searchVacancy().subscribe((data) => 
+    this.getVacancyService.searchVacancy().subscribe((data) =>
     {
       this.vacancyList = data;
       console.log(this.vacancyList);
     });
     this.getVacancyService.search().subscribe((data) =>
     {
-      this.userList = data;
+      this.userList = data.filter(n => [0].includes(n.free));
     });
   }
 

@@ -56,35 +56,13 @@
         <ion-list-header>
           Свободные сотрудники
         </ion-list-header>
-        <ion-list  >
+        <ion-list *ngFor="let row of userList" >
           <ion-item  >
             <ion-label>
-              <h2>ФИО: Скляров Константин </h2>
-              <h3>Контактное лицо: Руслан</h3>
-              <h3> Должность: Разработчик</h3>
-              <h3> Свободен: На все 100%</h3>
-            </ion-label>
-          </ion-item>
-          <ion-row>
-            <ion-col size-md = "5">
-              <ion-item>
-                <ion-label>Статус заявки</ion-label>
-                <ion-select value="" okText="Выбрать" cancelText="Скрыть">
-                  <ion-select-option value="open">Открыта</ion-select-option>
-                  <ion-select-option value="meeting">Назначена встреча</ion-select-option>
-                  <ion-select-option value="closed">Закрыта</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-list>
-        <ion-list  >
-          <ion-item  >
-            <ion-label>
-              <h2>ФИО: Скляров Константин </h2>
-              <h3>Контактное лицо: Руслан</h3>
-              <h3> Должность: Разработчик</h3>
-              <h3> Свободен: На все 100%</h3>
+              <h2 >ФИО: {{row.name}} </h2>
+              <h3>Контактное лицо: {{row.leader}}</h3>
+              <h3> Должность: {{row.position}}</h3>
+              <h3> Свободен: {{row.busy}}</h3>
             </ion-label>
           </ion-item>
           <ion-row>
