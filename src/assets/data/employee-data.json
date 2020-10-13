@@ -8,9 +8,29 @@
     "leader": "string",
     "experience": ["C","python"],
     "note": "string",
-    "certificates": "string",
+    "certificates": ["string"],
     "comments": "string",
-    "free": 1
+    "free": 1 ,
+    "activity": [
+      {
+        "month": "Июнь",
+        "project": [
+          {
+            "projectname": "ПМО",
+            "busy": "70"
+          }
+        ]
+      } ,
+      {
+        "month": "Июль",
+        "project": [
+          {
+            "projectname": "ККСО",
+            "busy": "70"
+          }
+        ]
+      }
+    ]
   },
   {
     "id" : "2",
@@ -23,7 +43,31 @@
     "note": "123",
     "certificates": "есть диплои об окончании школы (без 3) ",
     "comments": "string",
-    "free": 1
+    "free": 1 ,
+    "activity": [
+      {
+        "month": "Июнь",
+        "project": [
+          {
+            "projectname": "ПМО",
+            "busy": "70"
+          } ,
+          {
+            "projectname": "KFC",
+            "busy": "30"
+          }
+        ]
+      } ,
+      {
+        "month": "Июль",
+        "project": [
+          {
+            "projectname": "ККСО",
+            "busy": "70"
+          }
+        ]
+      }
+    ]
   },
   {
     "id" : "3",

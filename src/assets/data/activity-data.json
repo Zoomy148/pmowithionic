@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "activity": [
+      {
+        "month": "Июнь",
+        "project": [
+          {
+            "projectname": "ККСО",
+            "busy": 50
+          } ,
+          {
+            "projectname": "ПМО",
+            "busy": 50
+          }
+        ]
+      } ,
+      {
+        "month": "Июль",
+        "project": [
+          {
+            "projectname": "KFC",
+            "busy": 50
+          } ,
+          {
+            "projectname": "BK",
+            "busy": 50
+          }
+        ]
+      }
+    ]
+  } ,
+  {
+    "id": "2",
+    "activity": [
+      {
+        "month": "Июнь",
+        "project": [
+          {
+            "projectname": "ККСО",
+            "busy": 50
+          } ,
+          {
+            "projectname": "ПМО",
+            "busy": 50
+          }
+        ]
+      } ,
+      {
+        "month": "Июль",
+        "project": [
+          {
+            "projectname": "KFC",
+            "busy": 50
+          } ,
+          {
+            "projectname": "BK",
+            "busy": 50
+          }
+        ]
+      }
+    ]
+  }
+]

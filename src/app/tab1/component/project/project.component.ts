@@ -28,7 +28,7 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit() {
     this.getProjectsService.searchProject().subscribe(data => {
-      console.log(data);
+
       this.projectList = data;
     }, error => {
       console.log(error);

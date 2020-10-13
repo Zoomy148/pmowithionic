@@ -112,7 +112,7 @@
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Проблемы этапа</ion-label>
-                      <ion-textarea>{{row.problem}}</ion-textarea>
+                      <ion-textarea [(ngModel)]="row.problem"></ion-textarea>
                     </ion-item>
                   </ion-list>
               </mat-expansion-panel>

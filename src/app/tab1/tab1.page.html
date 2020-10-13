@@ -20,7 +20,7 @@
                 </ion-avatar>
                 <ion-label>
                   {{user.name}} 
-                  <p>{{user.position}} {{user.group}}</p>
+                  <p>{{user.position}} ({{user.group}})</p>
                 </ion-label> 
                 <ion-button [routerLink] = "['/tabs/tab1/users', user.id - 1]" [routerAnimation]="" ><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
               </ion-item>

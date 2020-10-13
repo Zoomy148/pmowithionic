@@ -3,7 +3,7 @@
     "id": "22",
     "direction": "Направление 1 ",
     "customer": "Илон",
-    "name":"SpaceX",
+    "project":"SpaceX",
     "leader": "Иванов",
     "stage": "Этап 1 ",
     "status": "Статус 1",

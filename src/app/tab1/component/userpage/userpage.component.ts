@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Employee } from 'src/app/services/employee.model';
 import { GetInfoService } from 'src/app/services/get-info.service';
 import { AlertController } from '@ionic/angular';
+import {Location} from '@angular/common';
+import { ModalController , } from '@ionic/angular';
+import {UserModalComponent} from './user-modal.component';
+
 
 @Component({
   selector: 'app-userpage',
@@ -10,35 +13,41 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./userpage.component.scss'],
 })
 export class UserpageComponent implements OnInit {
+
   public barChartLabels = [];
   public barChartType = 'doughnut';
   public barChartLegend = true;
   public barChartData = [
     {data: []}
   ];
-  public barChartOptions:any = {
+  public barChartOptions: any = {
     legend: {position: 'left'}
-  }
+  };
   hours = [];
   projects: [];
   users: [];
   user: any;
+  userSortData: any;
   newExp: string = '';
   editExp: boolean = false;
   constructor(private route: ActivatedRoute,
               private getUserService: GetInfoService,
-              public alertController: AlertController) { }
+              public alertController: AlertController,
+              private location: Location,
+              public modalController: ModalController) { }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
       this.getUserService.search().subscribe(data =>{
-        console.log(data);
+
         this.user = data[+params.get('userId')];
       })
     })
     this.getUserService.search().subscribe((userData) =>
     {
       this.users = userData;
+
     });
     this.getUserService.searchProject().subscribe(projectData =>{
       this.projects = projectData;
@@ -54,15 +63,33 @@ export class UserpageComponent implements OnInit {
   editExperience(){
     this.editExp = !this.editExp;
   }
-
+  goBack(){
+    this.location.back();
+  }
   addExp(){
     this.user.experience.push(this.newExp);
     this.newExp = '';
   }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: UserModalComponent,
+      cssClass: 'my-custom-class',
+    });
+    modal.onDidDismiss()
+        .then((data) => {
+          const user = data; // Here's your selected user!
+          console.log(user);
+        });
+    return await modal.present();
+  }
 
+  showModal(){
+    this.presentModal();
+  }
   deleteExp(id: number){
     this.user.experience.splice(id, 1);
   }
+
 
   async presentAlert(id: number) {
     const alert = await this.alertController.create({
