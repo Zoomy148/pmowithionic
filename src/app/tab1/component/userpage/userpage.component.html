@@ -110,7 +110,6 @@
                 </ion-button>
               </ion-buttons>
             </ion-toolbar>
-
           </ion-header>
           <ion-card *ngFor="let row of user.activity;let i = index">
             <mat-accordion>
@@ -133,7 +132,7 @@
                   Project part
                 </ion-col>
               </ion-row>
-              <ion-row *ngFor = "let project of user.activity[i].project">
+              <ion-row *ngFor = "let project of row.project">
                 <ion-col size-md = "3" style="text-align: center;">
                   {{project.projectname}}
                 </ion-col>
@@ -145,7 +144,7 @@
                 <ion-col size-md = "12">
                   <canvas baseChart
                           [datasets] = "barChartData"
-                          [labels] = "barChartLabels"
+                          [labels] = "barChartLabels[i]"
                           [legend] = "barChartLegend"
                           [options]="barChartOptions"
                           [chartType] = "barChartType">

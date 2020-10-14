@@ -17,6 +17,7 @@ export class Tab4Page implements OnInit, AfterViewInit {
   isPlaying = false;
   projectData: any;
   presaleProjectData: any;
+  stageData: any;
   slotToShow: string = 'presale';
   anim: Animation;
   constructor(private router: Router ,
@@ -63,7 +64,10 @@ export class Tab4Page implements OnInit, AfterViewInit {
    {
      this.projectData = data;
    });
-
+    this.dataService.searchStage().subscribe((datas) =>
+    {
+      this.stageData = datas.slice(datas.length - 1);
+    });
     this.dataService.searchPresaleProject().subscribe((data) =>
     {
       this.presaleProjectData = data;

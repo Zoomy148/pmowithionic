@@ -20,7 +20,6 @@ export class CommerceComponent implements OnInit {
     this.dataService.searchStage().subscribe((datas) =>
     {
       this.stageData = datas;
-      console.log(this.stageData);
     });
     this.dataService.searchProject().subscribe((data) =>
     {

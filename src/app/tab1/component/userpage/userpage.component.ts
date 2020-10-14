@@ -14,7 +14,7 @@ import {UserModalComponent} from './user-modal.component';
 })
 export class UserpageComponent implements OnInit {
 
-  public barChartLabels = [];
+  public barChartLabels = [[],[],[],[]];
   public barChartType = 'doughnut';
   public barChartLegend = true;
   public barChartData = [
@@ -39,10 +39,17 @@ export class UserpageComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
-      this.getUserService.search().subscribe(data =>{
+      this.getUserService.search().subscribe(data => {
 
         this.user = data[+params.get('userId')];
-      })
+
+        for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
+              this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
+        for (let i = 0 ; i < this.user.activity[1].project.length ; i++) {
+          this.barChartLabels[1].push( this.user.activity[1].project[i].projectname) ;}
+        for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
+          this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
+      });
     })
     this.getUserService.search().subscribe((userData) =>
     {
@@ -51,9 +58,6 @@ export class UserpageComponent implements OnInit {
     });
     this.getUserService.searchProject().subscribe(projectData =>{
       this.projects = projectData;
-      this.barChartLabels = this.projects.map((el) => {
-        return el['name'];
-      })
       this.hours = this.projects.map((el) => {
         return el['part'];
       })
