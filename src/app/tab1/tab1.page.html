@@ -5,7 +5,7 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="mobile">
   <ion-grid>
     <ion-row>
       <ion-col size-md = "6" offset-md = "3">
@@ -19,11 +19,53 @@
                   <ion-img [src] = "user.img"></ion-img>
                 </ion-avatar>
                 <ion-label>
-                  {{user.name}} 
+                  {{user.name}}
                   <p>{{user.position}} ({{user.group}})</p>
                 </ion-label> 
                 <ion-button [routerLink] = "['/tabs/tab1/users', user.id - 1]" [routerAnimation]="" ><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
               </ion-item>
+            </ion-card-content>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-content >
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md = "12" offset-md = "  ">
+        <ion-searchbar [(ngModel)] = "searchStr"></ion-searchbar>
+        <ion-card>
+          <ion-list>
+            <ion-card-header>Сотрудники</ion-card-header>
+            <ion-card-content>
+              <mat-accordion >
+                <mat-expansion-panel hideToggle *ngFor = "let user of userTable | search: searchStr ;let i = index " >
+                  <mat-expansion-panel-header >
+                    <mat-panel-description>
+              <ion-item >
+                <ion-avatar slot = "start">
+                  <ion-img [src] = "user.img"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  {{user.name}}
+                  <p>Группа:{{user.group}} Должность:  {{user.position}}</p>
+                </ion-label>
+
+                <ion-col>Контактное лицо:
+                  <p> {{user.leader}}</p>
+                </ion-col>
+                <ion-col >Учавствует в проектах :
+                  <p > {{user.activity[0].project[i].projectname}}</p>
+                </ion-col>
+                <ion-button [routerLink] = "['/tabs/tab1/users', user.id - 1]" [routerAnimation]="" ><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+              </ion-item>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>13232131312312</p>
+                </mat-expansion-panel>
+              </mat-accordion>
             </ion-card-content>
           </ion-list>
         </ion-card>

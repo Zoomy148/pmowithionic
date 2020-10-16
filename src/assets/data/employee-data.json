@@ -1,11 +1,11 @@
 [
   {
     "id" : "1",
-    "name" : "Филатов",
+    "name" : "Филатов Алексей Альбертович",
     "img": "https://cs9.pikabu.ru/post_img/2017/03/05/5/1488697405130264212.jpg",
-    "group": "string",
-    "position": "string",
-    "leader": "string",
+    "group": "Разработчики",
+    "position": "Ведущий разработчик",
+    "leader": "Руководитель 1",
     "experience": ["C","python"],
     "note": "string",
     "certificates": ["string"],

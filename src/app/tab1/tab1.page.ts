@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetInfoService } from '../services/get-info.service';
-
-
+import { environment} from '../../environments/environment';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -10,15 +9,13 @@ import { GetInfoService } from '../services/get-info.service';
 export class Tab1Page implements OnInit {
   searchStr = '';
   userTable = [];
+  mobile: boolean = environment.mobile ;
   constructor(private getUser: GetInfoService) {}
-
   ngOnInit(){
     this.getUser.search().subscribe((data) =>
     {
       this.userTable = data.filter(n => [1].includes(n.free));
     });
-
   }
-
   goToUser(id: number){}
 }
