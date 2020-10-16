@@ -7,6 +7,7 @@ import { ModalController , } from '@ionic/angular';
 import {UserModalComponent} from './user-modal.component';
 
 
+
 @Component({
   selector: 'app-userpage',
   templateUrl: './userpage.component.html',
@@ -30,6 +31,7 @@ export class UserpageComponent implements OnInit {
   userSortData: any;
   newExp: string = '';
   editExp: boolean = false;
+
   constructor(private route: ActivatedRoute,
               private getUserService: GetInfoService,
               public alertController: AlertController,

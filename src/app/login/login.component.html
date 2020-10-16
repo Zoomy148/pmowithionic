@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="mobile">
   <ion-toolbar color = "primary">
     <ion-title>
       Login page
@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="mobile">
   <ion-grid>
     <ion-row>
       <ion-col size-md = "6" offset-md = "3">
@@ -29,3 +29,15 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<form *ngIf="!desktop">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Введите email</label>
+    <input [(ngModel)]="email"  name = "email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Введите пароль</label>
+    <input [(ngModel)]="password" name = "password" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <button routerLink="/home" type="submit" class="btn btn-primary" (click)="login()">Войти</button>
+</form>
