@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab3Page } from './tab3.page';
+import {VacancyPageComponent} from './vacancy-page/vacancy-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: Tab3Page,
+  },
+  {
+    path: 'vacancy/:Id',
+    component: VacancyPageComponent
   }
 ];
 

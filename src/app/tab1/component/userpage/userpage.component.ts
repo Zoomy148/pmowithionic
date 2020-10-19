@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
 import {Location} from '@angular/common';
 import { ModalController , } from '@ionic/angular';
 import {UserModalComponent} from './user-modal.component';
-
+import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -14,7 +14,8 @@ import {UserModalComponent} from './user-modal.component';
   styleUrls: ['./userpage.component.scss'],
 })
 export class UserpageComponent implements OnInit {
-
+  mobile: boolean = environment.mobile;
+  desktop: boolean = environment.desktop;
   public barChartLabels = [[],[],[],[]];
   public barChartType = 'doughnut';
   public barChartLegend = true;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetInfoService } from '../services/get-info.service';
+import { environment} from '../../environments/environment';
 
 
 @Component({
@@ -8,7 +9,8 @@ import { GetInfoService } from '../services/get-info.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
-
+  mobile: boolean = environment.mobile;
+  desktop: boolean = environment.desktop;
   slotToShow: string = 'new_vacancy';
   vacancyList: any;
   userList: any;

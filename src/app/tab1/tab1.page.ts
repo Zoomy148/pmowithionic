@@ -7,8 +7,18 @@ import { environment} from '../../environments/environment';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
+  public barChartLabels = [[],[],[],[]];
+  public barChartType = 'doughnut';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: []}
+  ];
+  public barChartOptions: any = {
+    legend: {position: 'left'}
+  };
+  hours = [];
   searchStr = '';
-  userTable = [];
+  userTable: any;
   mobile: boolean = environment.mobile ;
   constructor(private getUser: GetInfoService) {}
   ngOnInit(){

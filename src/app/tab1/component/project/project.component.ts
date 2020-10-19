@@ -12,6 +12,7 @@ import { AlertController } from '@ionic/angular';
 export class ProjectComponent implements OnInit {
   editMode: boolean = false;
   userId: string;
+  vacancyId: string;
   projectName: string;
   projectList = [];
   project: Project = {

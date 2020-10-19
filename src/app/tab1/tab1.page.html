@@ -63,7 +63,61 @@
               </ion-item>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                  <p>13232131312312</p>
+                  <ion-card >
+                    <ion-item>
+                      <ion-label style="font-size: 20px;">Компетенции и сертификаты
+                      </ion-label>
+                    </ion-item>
+                    <ion-card-content>
+                      <ion-chip outline color="primary" *ngFor = "let experience of user.experience; index as num">
+                        <ion-label>{{experience}}</ion-label>
+                      </ion-chip>
+                      <ion-card *ngFor="let row of user.activity;let i = index">
+                        <mat-accordion>
+                          <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header style="height: 100px;">
+                              <mat-panel-title>
+                                <ion-card-header>
+                                  <ion-card-title>
+                                    {{row.month}}
+                                  </ion-card-title>
+                                </ion-card-header>
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <ion-card-content>
+                              <ion-row>
+                                <ion-col size-md = "3">
+                                  Project name
+                                </ion-col>
+                                <ion-col size-md = "3">
+                                  Project part
+                                </ion-col>
+                              </ion-row>
+                              <ion-row *ngFor = "let project of row.project">
+                                <ion-col size-md = "3" style="text-align: center;">
+                                  {{project.projectname}}
+                                </ion-col>
+                                <ion-col size-md = "3" style="text-align: center;">
+                                  {{project.busy}} %
+                                </ion-col>
+                              </ion-row>
+                              <ion-row>
+                                <ion-col size-md = "12">
+                                  <canvas baseChart
+                                          [datasets] = "barChartData"
+                                          [labels] = "barChartLabels[i]"
+                                          [legend] = "barChartLegend"
+                                          [options]="barChartOptions"
+                                          [chartType] = "barChartType">
+                                  </canvas>
+                                </ion-col>
+                              </ion-row>
+                            </ion-card-content>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                      </ion-card>
+                    </ion-card-content>
+                  </ion-card>
                 </mat-expansion-panel>
               </mat-accordion>
             </ion-card-content>
