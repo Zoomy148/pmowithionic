@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetInfoService } from '../services/get-info.service';
 import { environment} from '../../environments/environment';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class Tab3Page implements OnInit {
   slotToShow: string = 'new_vacancy';
   vacancyList: any;
   userList: any;
-  constructor(private getVacancyService: GetInfoService){}
+  constructor(private getVacancyService: GetInfoService,
+              private router: Router){}
   segmentChanged(ev: any){
     console.log(ev.detail.value);
     this.slotToShow = ev.detail.value;
@@ -24,7 +26,6 @@ export class Tab3Page implements OnInit {
     this.getVacancyService.searchVacancy().subscribe((data) =>
     {
       this.vacancyList = data;
-      console.log(this.vacancyList);
     });
     this.getVacancyService.search().subscribe((data) =>
     {

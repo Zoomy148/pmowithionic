@@ -3,6 +3,8 @@ import {Location} from '@angular/common';
 import { ModalController , } from '@ionic/angular';
 import { ModalPage } from './modalPage.component';
 import {GetInfoService} from '../../services/get-info.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-commerce',
@@ -12,10 +14,15 @@ import {GetInfoService} from '../../services/get-info.service';
 export class CommerceComponent implements OnInit {
   stageData: any;
   projectData: any;
+  number: number;
+  public subscription: Subscription;
   constructor(private location: Location,
               public modalController: ModalController,
               public dataService: GetInfoService,
-              ) { }
+              public activateRoute: ActivatedRoute
+              ) {
+    this.subscription = activateRoute.params.subscribe(params => this.number = params['number']);
+  }
   ngOnInit() {
     this.dataService.searchStage().subscribe((datas) =>
     {

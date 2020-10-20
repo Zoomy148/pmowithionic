@@ -93,9 +93,9 @@
           <h1>Вакансии</h1>
           <ion-card *ngFor = "let vacancy of vacancyList">
             <ion-card-header>
-              <ion-button [routerLink] = "['/tabs/tab3/vacancy', vacancy.id ]">
-                <h2>Проект: {{vacancy.project_name}}</h2>
-              </ion-button>
+              <a [routerLink] = "['vacancy', vacancy.id ]">
+                <h2>Проект: {{vacancy.projectName}}</h2>
+              </a>
             </ion-card-header>
             <ion-list >
             <ion-item  >

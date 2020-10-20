@@ -9,7 +9,7 @@ const routes: Routes = [
     component: Tab3Page,
   },
   {
-    path: 'vacancy/:Id',
+    path: 'vacancy/:id',
     component: VacancyPageComponent
   }
 ];

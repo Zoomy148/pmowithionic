@@ -5,6 +5,58 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<p>
-  123
-</p>
+<ion-content *ngFor="let row of vacancyData">
+  <ion-card>
+    <ion-card-content>
+      <ion-col size-md = "6" >
+
+      <ion-item>
+       <ion-row>
+         <ion-label>Источник вакансии : {{row.vacancySource}}</ion-label>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-label>Вакантая должность : {{row.vacancy}}</ion-label>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-label>Обоснования появления вакансии: </ion-label>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-label>Должностные обязанности : {{row.vacancy}}</ion-label>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-label>Название проекта : {{row.projectName}}</ion-label>
+        </ion-row>
+      </ion-item>
+      </ion-col>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-item>
+           <ion-row>
+             <ion-label>Контактное лицо </ion-label>
+           </ion-row>
+
+          </ion-item>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>2 of 4</div>
+      </ion-col>
+      <ion-col>
+        <div>3 of 4</div>
+      </ion-col>
+      <ion-col>
+        <div>4 of 4</div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

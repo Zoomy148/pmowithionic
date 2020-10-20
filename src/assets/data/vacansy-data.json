@@ -1,16 +1,17 @@
 [
   {
-    "id": "48",
-    "project_name": "PMO",
+    "id": "44444444",
+    "projectName": "PMO",
     "responsible": "Герасимов Евгений Петрович",
     "vacancy": "Разработчик backend",
     "amount": "Бабки?",
     "date": "01.01.2020 - 01.10.2020",
+    "vacancySource": "Семенов В А ",
     "status": "Открыта"
   },
   {
-    "id": "44",
-    "project_name": "КОНТЕР",
+    "id": "1",
+    "projectName": "КОНТЕР",
     "responsible": "Гейб",
     "vacancy": "Разработчик",
     "amount": "Бабки?",
