@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color = "primary">
     <ion-title>
-      Vacancies
+      Вакансии
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -86,11 +86,10 @@
 </ion-content>
 <ion-content>
   <ion-content *ngIf = "(slotToShow ==='new_vacancy') &&  (vacancyList)">
-
     <ion-grid>
       <ion-row>
         <ion-col size-md = "9" offset-md = "1">
-          <h1>Вакансии</h1>
+          <h1>Вакансии <ion-button class="add-button" [routerLink]="['add-new-vacancy']">Добавить вакансию</ion-button></h1>
           <ion-card *ngFor = "let vacancy of vacancyList">
             <ion-card-header>
               <a [routerLink] = "['vacancy', vacancy.id ]">
@@ -118,7 +117,6 @@
                 <ion-col size-md = "9" offset-md = "1">
                 <mat-accordion >
                   <ion-col size-md = "9" offset-md = "1">
-
                   <mat-expansion-panel hideToggle  style="width: 145vh">
                     <mat-expansion-panel-header >
                        <h3>Подробнее</h3>
@@ -145,6 +143,38 @@
               </ion-col>
             </ion-row>
           </ion-list>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <ion-content *ngIf = "(slotToShow ==='free_guys') && (vacancyList)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md = "9" offset-md = "1">
+          <h1>Свободные сотрудники</h1>
+
+          <ion-card *ngFor="let row of userList" >
+            <ion-item  >
+              <ion-label>
+                <h2><a [routerLink]="['/tabs/tab1/users', row.id - 1]"> ФИО: {{row.name}} </a> </h2>
+                <h3>Контактное лицо: {{row.leader}}</h3>
+                <h3> Должность: {{row.position}}</h3>
+                <h3> Свободен: {{row.busy}}</h3>
+              </ion-label>
+            </ion-item>
+            <ion-row>
+              <ion-col size-md = "5">
+                <ion-item>
+                  <ion-label>Статус заявки</ion-label>
+                  <ion-select value="" okText="Выбрать" cancelText="Скрыть">
+                    <ion-select-option value="open">Открыта</ion-select-option>
+                    <ion-select-option value="meeting">Назначена встреча</ion-select-option>
+                    <ion-select-option value="closed">Закрыта</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
           </ion-card>
         </ion-col>
       </ion-row>

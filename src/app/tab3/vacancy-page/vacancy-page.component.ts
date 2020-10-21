@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {GetInfoService} from '../../services/get-info.service';
-import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -11,24 +11,15 @@ import { Subscription } from 'rxjs';
 })
 export class VacancyPageComponent implements OnInit {
   vacancyData = [];
-  number: number;
-  public subscription: Subscription;
+  number: string;
   constructor( private route: ActivatedRoute,
-               private dataService: GetInfoService) {
-    this.subscription = route.params.subscribe(params => this.number = params['id']);
-  }
-
+               private dataService: GetInfoService) {}
   ngOnInit() {
-    // this.route.paramMap.subscribe(params => {
-    //   this.dataService.searchVacancy().subscribe(data => {
-    //     this.vacancyData = data[+params.get('id')];
-    //     console.log(data);
-    //   });
-    // })
-      this.dataService.searchVacancy().subscribe(data => {
-        this.vacancyData = data.filter(n => [this.number].includes(n.id));
-        console.log(this.vacancyData);
-        console.log(this.number);
-    });
+    this.route.paramMap.subscribe(params => this.number = params.get('id'));
+    this.dataService.searchVacancy().subscribe(data => {
+    this.vacancyData = data.filter( vacancy => this.number === vacancy.id );
+    console.log(this.vacancyData);
+    console.log(this.number);
+  });
   }
 }
