@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import { Router } from '@angular/router';
 import { GetInfoService} from '../services/get-info.service';
 import { AnimationController , Animation} from '@ionic/angular';
+import { environment} from '../../environments/environment';
 
 
 @Component({
@@ -13,12 +14,14 @@ import { AnimationController , Animation} from '@ionic/angular';
 export class Tab4Page implements OnInit, AfterViewInit {
   @ViewChild('presale', {static: false}) presale: ElementRef;
   searchStr = '';
-
+  mobile: boolean = environment.mobile;
   isPlaying = false;
   projectData: any;
   presaleProjectData: any;
   stageData: any;
   slotToShow: string = 'presale';
+  tabToShow: string = 'archive';
+  tabToShowCommerce: string = 'arciveCommerce';
   anim: Animation;
   constructor(private router: Router ,
               public  dataService: GetInfoService,
@@ -29,6 +32,14 @@ export class Tab4Page implements OnInit, AfterViewInit {
     console.log(ev.detail.value);
     this.slotToShow = ev.detail.value;
   }
+    tabChanged(ev: any){
+        console.log(ev.detail.value);
+        this.tabToShow = ev.detail.value;
+    }
+    tabCommerceChange(ev: any) {
+        console.log(ev.detail.value);
+        this.tabToShowCommerce = ev.detail.value;
+    }
 
   goToDetails(num: number){
     this.router.navigate(['/tabs/tab4/presale/' + num]);

@@ -32,6 +32,7 @@ export class UserpageComponent implements OnInit {
   userSortData: any;
   newExp: string = '';
   editExp: boolean = false;
+  number: any;
 
   constructor(private route: ActivatedRoute,
               private getUserService: GetInfoService,
@@ -40,20 +41,18 @@ export class UserpageComponent implements OnInit {
               public modalController: ModalController) { }
 
   ngOnInit() {
-
-    this.route.paramMap.subscribe(params => {
-      this.getUserService.search().subscribe(data => {
-
-        this.user = data[+params.get('userId')];
-
-        for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
-              this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
-        for (let i = 0 ; i < this.user.activity[1].project.length ; i++) {
-          this.barChartLabels[1].push( this.user.activity[1].project[i].projectname) ;}
-        for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
-          this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
-      });
-    })
+    this.route.paramMap.subscribe(params => this.number = params.get('id'));
+    this.getUserService.searchVacancy().subscribe(data => {
+      this.user = data.filter( vacancy => this.number === vacancy.id );
+      console.log(this.user);
+      console.log(this.number);
+      for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
+        this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
+      for (let i = 0 ; i < this.user.activity[1].project.length ; i++) {
+        this.barChartLabels[1].push( this.user.activity[1].project[i].projectname) ;}
+      for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
+        this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
+    });
     this.getUserService.search().subscribe((userData) =>
     {
       this.users = userData;
