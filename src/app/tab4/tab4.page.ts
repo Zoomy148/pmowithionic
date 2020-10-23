@@ -40,7 +40,6 @@ export class Tab4Page implements OnInit, AfterViewInit {
         console.log(ev.detail.value);
         this.tabToShowCommerce = ev.detail.value;
     }
-
   goToDetails(num: number){
     this.router.navigate(['/tabs/tab4/presale/' + num]);
   }
@@ -68,8 +67,6 @@ export class Tab4Page implements OnInit, AfterViewInit {
   //   this.isPlaying = !this.isPlaying;
   //   console.log(this.isPlaying)
   // }
-
-
   ngOnInit() {
     this.dataService.searchProject().subscribe((data) =>
    {

@@ -33,12 +33,9 @@ export class CommerceComponent implements OnInit {
       this.projectData = data;
     });
   }
-
   goBack(){
     this.location.back();
   }
-
-
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,
@@ -51,7 +48,6 @@ export class CommerceComponent implements OnInit {
   });
     return await modal.present();
   }
-
   showModal(){
     this.presentModal();
   }

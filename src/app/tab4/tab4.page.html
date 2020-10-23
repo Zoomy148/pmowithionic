@@ -299,13 +299,14 @@
                   <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
                     <mat-expansion-panel-header >
                       <mat-panel-title>
-                        {{row.title}}
+                        Последний этап
                       </mat-panel-title>
                       <mat-panel-description style="color: black;">
-                        {{row.stageStatus}}
                       </mat-panel-description>
                     </mat-expansion-panel-header>
                     <ion-list >
+                      {{row.title}} <br>
+                      {{row.stageStatus}}
                       <ion-item color = "success">
                         <ion-label> Статус акта</ion-label>
                         <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
@@ -464,5 +465,4 @@
       </ion-grid>
     </ion-content>
    </ion-content>
-
 </ion-content>

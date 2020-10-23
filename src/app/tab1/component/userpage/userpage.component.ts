@@ -27,8 +27,8 @@ export class UserpageComponent implements OnInit {
   };
   hours = [];
   projects: [];
-  users: [];
-  user: any;
+  users: any;
+  user = [];
   userSortData: any;
   newExp: string = '';
   editExp: boolean = false;
@@ -41,30 +41,27 @@ export class UserpageComponent implements OnInit {
               public modalController: ModalController) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => this.number = params.get('id'));
-    this.getUserService.searchVacancy().subscribe(data => {
+    this.route.paramMap.subscribe(params => this.number = params.get('userId'));
+    this.getUserService.search().subscribe(data => {
       this.user = data.filter( vacancy => this.number === vacancy.id );
-      console.log(this.user);
+      this.users = data.filter( vacancy => this.number === vacancy.id );
+      console.log(this.users);
       console.log(this.number);
-      for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
-        this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
-      for (let i = 0 ; i < this.user.activity[1].project.length ; i++) {
-        this.barChartLabels[1].push( this.user.activity[1].project[i].projectname) ;}
-      for (let i = 0 ; i < this.user.activity[0].project.length ; i++) {
-        this.barChartLabels[0].push( this.user.activity[0].project[i].projectname) ;}
-    });
-    this.getUserService.search().subscribe((userData) =>
-    {
-      this.users = userData;
-
+      console.log(this.users[0].name);
+      for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
+        this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
+      for (let i = 0 ; i < this.users.activity[1].project.length ; i++) {
+        this.barChartLabels[1].push( this.users.activity[1].project[i].projectname) ; }
+      for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
+        this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
     });
     this.getUserService.searchProject().subscribe(projectData =>{
       this.projects = projectData;
       this.hours = this.projects.map((el) => {
         return el['part'];
-      })
+      });
       this.barChartData = [{data: [parseInt(this.hours[0]), parseInt(this.hours[1]), parseInt(this.hours[2])]}];
-    })
+    });
   }
   editExperience(){
     this.editExp = !this.editExp;
@@ -73,7 +70,7 @@ export class UserpageComponent implements OnInit {
     this.location.back();
   }
   addExp(){
-    this.user.experience.push(this.newExp);
+    this.users.experience.push(this.newExp);
     this.newExp = '';
   }
   async presentModal() {
@@ -88,15 +85,12 @@ export class UserpageComponent implements OnInit {
         });
     return await modal.present();
   }
-
   showModal(){
     this.presentModal();
   }
   deleteExp(id: number){
-    this.user.experience.splice(id, 1);
+    this.users.experience.splice(id, 1);
   }
-
-
   async presentAlert(id: number) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -117,7 +111,6 @@ export class UserpageComponent implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 }

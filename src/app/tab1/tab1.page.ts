@@ -39,9 +39,9 @@ export class Tab1Page implements OnInit {
       this.projects = projectData;
       this.hours = this.projects.map((el) => {
         return el['part'];
-      })
+      });
       this.barChartData = [{data: [parseInt(this.hours[0]), parseInt(this.hours[1]), parseInt(this.hours[2])]}];
-    })
+    });
   }
   goToUser(id: number){}
 }

@@ -21,7 +21,6 @@ export class Tab3Page implements OnInit {
     console.log(ev.detail.value);
     this.slotToShow = ev.detail.value;
   }
-
   ngOnInit(){
     this.getVacancyService.searchVacancy().subscribe((data) =>
     {
@@ -32,5 +31,4 @@ export class Tab3Page implements OnInit {
       this.userList = data.filter(n => [0].includes(n.free));
     });
   }
-
 }

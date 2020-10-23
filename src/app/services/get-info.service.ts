@@ -26,7 +26,6 @@ export class GetInfoService {
       this.userTable = this.http.get('assets/data/employee-data.json');
       console.log(this.http.get('assets/data/employee-data.json'));
       return this.userTable;
-
     }
 
     searchProject(){
