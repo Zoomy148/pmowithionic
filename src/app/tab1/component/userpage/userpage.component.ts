@@ -29,6 +29,7 @@ export class UserpageComponent implements OnInit {
   projects: [];
   users: any;
   user = [];
+  value = [];
   userSortData: any;
   newExp: string = '';
   editExp: boolean = false;

@@ -22,6 +22,7 @@ export class Tab1Page implements OnInit {
   projects: [];
   user: any;
   mobile: boolean = environment.mobile ;
+  desktop: boolean = environment.desktop ;
   constructor(private getUser: GetInfoService) {}
   ngOnInit(){
     this.getUser.search().subscribe((data) =>

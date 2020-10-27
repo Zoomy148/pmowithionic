@@ -15,6 +15,7 @@ export class Tab4Page implements OnInit, AfterViewInit {
   @ViewChild('presale', {static: false}) presale: ElementRef;
   searchStr = '';
   mobile: boolean = environment.mobile;
+  desktop: boolean = environment.desktop;
   isPlaying = false;
   projectData: any;
   presaleProjectData: any;
@@ -23,6 +24,8 @@ export class Tab4Page implements OnInit, AfterViewInit {
   tabToShow: string = 'archive';
   tabToShowCommerce: string = 'arciveCommerce';
   anim: Animation;
+  selector = [];
+  selectValue = '';
   constructor(private router: Router ,
               public  dataService: GetInfoService,
               public animationCtrl: AnimationController ,
@@ -46,6 +49,18 @@ export class Tab4Page implements OnInit, AfterViewInit {
 
   goToCommercePage(num: number){
     this.router.navigate(['/tabs/tab4/commerce/' + num]);
+  }
+  getValue() {
+      this.selector.push( document.getElementById('selector'));
+      this.selectValue = ( this.selector[1].value );
+
+
+  }
+  stageFilterPresaleArchiveData(){
+      this.presaleProjectData = this.presaleProjectData.filter(
+          stage => this.selectValue[1] === stage.stage );
+      console.log(this.selectValue[1]);
+
   }
   ngAfterViewInit() {
     // this.anim = this.animationCtrl.create('myanim');

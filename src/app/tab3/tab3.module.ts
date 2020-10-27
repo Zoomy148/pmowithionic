@@ -9,6 +9,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab3PageRoutingModule } from './tab3-routing.module'
 import {MatExpansionModule} from '@angular/material/expansion';
 import {VacancyPageComponent} from './vacancy-page/vacancy-page.component';
+import {NewVacancyPageComponent} from './new-vacancy-page/new-vacancy-page.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {VacancyPageComponent} from './vacancy-page/vacancy-page.component';
     ],
   declarations: [
       Tab3Page,
-      VacancyPageComponent
+      VacancyPageComponent,
+      NewVacancyPageComponent
   ]
 })
 export class Tab3PageModule {}

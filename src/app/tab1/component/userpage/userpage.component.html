@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="mobile">
   <ion-toolbar color = "primary">
     <ion-title>
       Сотрудники
@@ -161,7 +161,8 @@
     </ion-slide>
   </ion-slides>
 </ion-content>
-<ion-content *ngFor=" let users of users">
+<ion-content *ngIf="desktop">
+<ion-content *ngFor=" let users of users" >
   <ion-grid>
     <ion-row>
       <ion-header>
@@ -303,4 +304,4 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
+</ion-content>

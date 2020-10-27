@@ -6,7 +6,7 @@
     <ion-button slot="end">Сохранить</ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content >
+<ion-content *ngIf="desktop">
   <ion-card>
     <ion-card-content>
       <ion-col size-md = "6" >
@@ -488,4 +488,51 @@
       </ion-col>
     </ion-row>
   </ion-card>
+</ion-content>
+<ion-content *ngIf="mobile">
+  <ion-grid>
+    <ion-col size-md="6">
+      <ion-item>
+        <ion-label position="stacked">Вакантная должность</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Должноснтные обязанности</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Базовое образование</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Дополнительное образование</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Общий стаж работы</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Опыт работы в указанной должности</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Профессиональные навыки</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Опыт работы с технологиями и програмными продуктами</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Иностранный язык (степень владения)</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Дополнительные требования</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+
+   </ion-col>
+  </ion-grid>
 </ion-content>

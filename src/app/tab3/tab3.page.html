@@ -1,8 +1,26 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="desktop">
+  <ion-toolbar color = "primary">
+    <ion-toolbar color = "primary">
+      <ion-avatar slot="start">
+        <ion-img src="/assets/icon/logo.png"></ion-img>
+      </ion-avatar>
+        <ion-buttons slot="start"  class="header-btn" >
+          <ion-button style="margin-left: 10px; margin-right: 10px" [routerLink]="['/tabs/tab1']">Сотрудники</ion-button>
+          <ion-button style="margin-left: 10px; margin-right: 10px" [routerLink]="['/tabs/tab3']">Вакансии</ion-button>
+          <ion-button style="margin-left: 10px; margin-right: 10px" [routerLink]="['/tabs/tab4']">Проекты</ion-button>
+       </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header [translucent]="true" *ngIf="mobile">
   <ion-toolbar color = "primary">
     <ion-title>
       Вакансии
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['add-new-vacancy']">Добавить</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-toolbar>
@@ -27,7 +45,7 @@
               <ion-list *ngFor = "let vacancy of vacancyList" >
                 <ion-item  >
                   <ion-label>
-                    <h2>Проект: {{vacancy.project_name}} </h2>
+                    <h2>Проект: {{vacancy.projectName}} </h2>
                     <h3>Контактное лицо: {{vacancy.responsible}}</h3>
                     <h3> Вакансия: {{vacancy.vacancy}}</h3>
                   </ion-label>
@@ -84,7 +102,7 @@
   </ion-grid>
 </ion-content>
 </ion-content>
-<ion-content>
+<ion-content *ngIf="desktop">
   <ion-content *ngIf = "(slotToShow ==='new_vacancy') &&  (vacancyList)">
     <ion-grid>
       <ion-row>
