@@ -3,7 +3,7 @@
     <ion-avatar slot="start">
       <ion-img src="/assets/icon/logo.png"></ion-img>
     </ion-avatar>
-    <ion-buttons slot="start" >
+    <ion-buttons slot="start"  style="margin-left: 30%; margin-right: 30%">
       <ion-button [routerLink]="['/tabs/tab1']">Сотрудники</ion-button>
       <ion-button [routerLink]="['/tabs/tab3']">Вакансии</ion-button>
       <ion-button [routerLink]="['/tabs/tab4']">Проекты</ion-button>
@@ -196,21 +196,32 @@
                   <mat-panel-description style="color: black;">
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-            <ion-button >
+            <ion-button  >
               Ответственный
             </ion-button >
-            <ion-button (click)="getValue();stageFilterPresaleArchiveData()">
+            <ion-button >
               Этап
-              <ion-select multiple="true" cancelText="Отменить" okText="Сохранить" [value]="[]" id="selector">
+              <ion-select multiple="true" cancelText="Отменить" okText="Сохранить" (ionChange)="changeFilters()" [(ngModel)]="selectValue" id="selector">
                 <ion-select-option value="Этап1">Этап1</ion-select-option>
                 <ion-select-option value="Этап2">Этап 2 </ion-select-option>
                 <ion-select-option value="xcheese">Этап 3 </ion-select-option>
                 <ion-select-option value="peppers">Этап 4</ion-select-option>
               </ion-select>
             </ion-button>
-            <ion-button>
+            <ion-button (click)="chooseDate()">
               Дата
             </ion-button>
+            <ion-buttons *ngIf="date" >
+              <ion-item >
+                <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете начальную дату"></ion-datetime>
+              </ion-item>
+              <ion-item style="margin-left: 20px" >
+                <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете конечную дату"></ion-datetime>
+              </ion-item>
+              <ion-button color="primary" style="margin-left: 20px">
+                Применить
+              </ion-button>
+            </ion-buttons>
               </mat-expansion-panel>
             </mat-accordion>
           </ion-toolbar>
@@ -329,7 +340,7 @@
             </ion-buttons>
 
           </ion-toolbar>
-          <ion-card *ngFor="let row of projectData | search: searchStr">
+          <ion-card *ngFor="let row of commerceProjectData | search: searchStr">
             <ion-card-header>Коммерция</ion-card-header>
             <ion-card-content>
               <ion-list>

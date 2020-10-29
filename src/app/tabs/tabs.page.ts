@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment';
 })
 export class TabsPage {
   mobile: boolean = environment.mobile;
-  desktop: boolean = environment.desktop
+  desktop: boolean = environment.desktop;
   constructor() {}
 
 }

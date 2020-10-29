@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -22,13 +22,12 @@ export class ModalPage {
         actual_payment_date: '',
         stage_comments: '',
         stage_problems: ''
-    }
+    };
     url = 'assets/data/status-stage-data.json';
     constructor(private mdlCntrl: ModalController,
                 public http: HttpClient,
                 public router: Router) {}
-    async close(){
+    async close() {
         await this.mdlCntrl.dismiss(this.stage);
     }
-
 }

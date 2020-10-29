@@ -8,6 +8,7 @@ import {UserModalComponent} from './user-modal.component';
 import {environment} from '../../../../environments/environment';
 
 
+
 @Component({
   selector: 'app-userpage',
   templateUrl: './userpage.component.html',
@@ -30,11 +31,9 @@ export class UserpageComponent implements OnInit {
   users: any;
   user = [];
   value = [];
-  userSortData: any;
   newExp: string = '';
   editExp: boolean = false;
-  number: any;
-
+  number: string;
   constructor(private route: ActivatedRoute,
               private getUserService: GetInfoService,
               public alertController: AlertController,
@@ -46,9 +45,6 @@ export class UserpageComponent implements OnInit {
     this.getUserService.search().subscribe(data => {
       this.user = data.filter( vacancy => this.number === vacancy.id );
       this.users = data.filter( vacancy => this.number === vacancy.id );
-      console.log(this.users);
-      console.log(this.number);
-      console.log(this.users[0].name);
       for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
         this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
       for (let i = 0 ; i < this.users.activity[1].project.length ; i++) {
@@ -56,7 +52,7 @@ export class UserpageComponent implements OnInit {
       for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
         this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
     });
-    this.getUserService.searchProject().subscribe(projectData =>{
+    this.getUserService.searchProject().subscribe(projectData => {
       this.projects = projectData;
       this.hours = this.projects.map((el) => {
         return el['part'];
@@ -64,13 +60,13 @@ export class UserpageComponent implements OnInit {
       this.barChartData = [{data: [parseInt(this.hours[0]), parseInt(this.hours[1]), parseInt(this.hours[2])]}];
     });
   }
-  editExperience(){
+  editExperience() {
     this.editExp = !this.editExp;
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
-  addExp(){
+  addExp() {
     this.users.experience.push(this.newExp);
     this.newExp = '';
   }
@@ -86,7 +82,7 @@ export class UserpageComponent implements OnInit {
         });
     return await modal.present();
   }
-  showModal(){
+  showModal() {
     this.presentModal();
   }
   deleteExp(id: number){

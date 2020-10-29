@@ -11,12 +11,10 @@ export class LoginComponent implements OnInit {
   mobile: boolean = environment.mobile;
   desktop: boolean = environment.desktop;
   constructor(private router: Router) { }
-
   password: string;
   email: string;
-
-  ngOnInit() {}
-  login(){
+  ngOnInit() { }
+  login() {
     if (this.email === 'admin' && this.password === 'admin') {
       this.router.navigate(['/tabs/tab1']);
     }

@@ -15,13 +15,13 @@ export class ProjectdetailsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params =>{
+    this.route.paramMap.subscribe(params => {
       this.getProject.searchProject().subscribe(data =>
         {
-          this.project = data[+params.get('projectId')];    
+          this.project = data[+params.get('projectId')];
         }, error => {
           console.log(error);
-        })
-    })
+        });
+    });
   }
 }

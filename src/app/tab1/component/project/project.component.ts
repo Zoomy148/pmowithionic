@@ -24,8 +24,8 @@ export class ProjectComponent implements OnInit {
     part: ''
   };
   constructor(private getProjectsService: GetInfoService,
-    private route: ActivatedRoute,
-    public alertController: AlertController) { }
+              private route: ActivatedRoute,
+              public alertController: AlertController) { }
 
   ngOnInit() {
     this.getProjectsService.searchProject().subscribe(data => {
@@ -34,27 +34,22 @@ export class ProjectComponent implements OnInit {
     }, error => {
       console.log(error);
       }
-    )
+    );
     this.route.paramMap.subscribe( params =>{
       this.userId = params.get('userId');
-    })
+    });
   }
-
-  onEditMode(){
+  onEditMode() {
     this.editMode = !this.editMode;
   }
-
-  addProject(){
+  addProject() {
       this.project.name = this.projectName;
       this.projectList.push(this.project);
       this.projectName = '';
-
   }
-
-  deleteProject(id: number){
+  deleteProject(id: number) {
     this.projectList.splice(id, 1);
   }
-
   async presentAlert(id: number) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -75,7 +70,6 @@ export class ProjectComponent implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 }

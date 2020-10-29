@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./commerce.component.scss'],
 })
 export class CommerceComponent implements OnInit {
-  stageData: any;
-  projectData: any;
+  stageData: StageModel;
+  projectData: CommerceProjectModel;
   number: number;
   public subscription: Subscription;
   constructor(private location: Location,
