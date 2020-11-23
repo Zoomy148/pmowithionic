@@ -1,0 +1,49 @@
+[
+  {
+    "changeDate": "08.11.2020",
+    "id": 1,
+    "projectCode": "123456",
+    "projectComments": "Какие - то комментарии",
+    "projectDirectionId": 23,
+    "projectDirectionName": "Направление 1",
+    "projectId": 1 ,
+    "projectLeaderId": 2,
+    "projectLeaderName": "Скляров",
+    "projectName": "PMO",
+    "projectProblems": "Какие то проблемы проекта",
+    "requisites": "12345678910",
+    "statusContract": "Подписан",
+    "projectCommerceStageItems": [
+      {
+        "dateOfSigningTheAct": "01.11.2020",
+        "payDayInDoc": "12.12.2012",
+        "payDayInFact": "10.20.2020",
+        "stageComments" : "Какие то коментарии к этапу",
+        "stageEndDate": "12.20.2020",
+        "stageName" : "Этап1",
+        "stageProblem": "Какие то проблемы этапа",
+        "stageRequisites": "10987654321",
+        "stageStatus": "Статус этапа - какой то статус",
+        "stageStatusAct": "акт подписан",
+        "sumFinal": 25000 ,
+        "sumOfPaySubcontractors": 20000,
+        "sumOfStage": 5000
+      }
+    ],
+    "projectCommerceFileItem": [
+      {
+        "fileNumber": 1,
+        "fileName": "Файл №1",
+        "fileDirection": "Проект",
+        "fileDescription": "Какое то описание "
+      },
+      {
+        "fileNumber": 2,
+        "fileName": "Файл №2",
+        "fileDirection": "Проект",
+        "fileDescription": "Какое то описание "
+      }
+    ]
+
+  }
+]

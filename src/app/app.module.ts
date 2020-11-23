@@ -14,15 +14,10 @@ import {enterAnimation} from './animation/nav-animation';
 
 
 
-
-
-
 @NgModule({
-  declarations: 
+  declarations:
   [AppComponent,
   LoginComponent,
- 
-
 ],
 
   entryComponents: [],

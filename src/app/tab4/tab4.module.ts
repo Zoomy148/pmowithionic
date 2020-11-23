@@ -9,6 +9,8 @@ import { CommerceComponent } from './commerce/commerce.component';
 import { PresaleComponent } from './presale/presale.component';
 import { ModalPage } from './commerce/modalPage.component';
 import {Tab1PageModule} from '../tab1/tab1.module';
+import {ExitAboutGuard} from '../guards/exit.guard';
+
 
 @NgModule({
     imports: [
@@ -19,6 +21,7 @@ import {Tab1PageModule} from '../tab1/tab1.module';
         MatExpansionModule,
         Tab1PageModule
     ],
-  declarations: [Tab4Page, CommerceComponent, PresaleComponent, ModalPage]
+  declarations: [Tab4Page, CommerceComponent, PresaleComponent, ModalPage],
+    providers: [ExitAboutGuard]
 })
 export class Tab4PageModule {}

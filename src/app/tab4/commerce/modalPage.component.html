@@ -40,11 +40,11 @@
                             </ion-item>
                             <ion-item>
                                 <ion-label>Срок окончания этапа</ion-label>
-                                <ion-datetime [(ngModel)] = "stage.stage_deadline" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                                <ion-datetime [(ngModel)] = "stage.stage_deadline"  placeholder="Select Date" max="2030"></ion-datetime>
                             </ion-item> 
                             <ion-item>
                                 <ion-label>Дата подписания акта</ion-label>
-                                <ion-datetime [(ngModel)] = "stage.signing_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                                <ion-datetime [(ngModel)] = "stage.signing_date"  placeholder="Select Date" max="2030"></ion-datetime>
                             </ion-item> 
                             <ion-item>
                                 <ion-label position="floating">Сумма по этапу (с НДС)</ion-label>
@@ -60,11 +60,11 @@
                             </ion-item>
                             <ion-item>
                                 <ion-label>Дата оплаты по договору</ion-label>
-                                <ion-datetime [(ngModel)] = "stage.contract_payment_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                                <ion-datetime [(ngModel)] = "stage.contract_payment_date"  placeholder="Select Date" max="2030"></ion-datetime>
                             </ion-item>
                             <ion-item>
                                 <ion-label>Фактическая дата оплаты</ion-label>
-                                <ion-datetime [(ngModel)] = "stage.actual_payment_date" value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                                <ion-datetime [(ngModel)] = "stage.actual_payment_date"  placeholder="Select Date" max="2030"></ion-datetime>
                             </ion-item>
                             <ion-item>
                                 <ion-label position="floating">Комментарии этапа</ion-label>

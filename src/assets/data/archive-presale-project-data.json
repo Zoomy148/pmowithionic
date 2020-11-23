@@ -1,0 +1,21 @@
+[
+  {
+    "id": 33,
+    "presaleChangeTime": "10.10.2020" ,
+    "presaleContractualTerm": "10.10.2020" ,
+    "presaleCustomer": "Какой то заказчик" ,
+    "presaleDirectionId" : 123 ,
+    "presaleDirectionName": "Направление 2",
+    "presaleIntermediateResult": "Какие то результаты",
+    "presaleNotes": "Какие то примечания",
+    "presalePlanSale": 1432,
+    "presalePlanTerm": "10.10.2020",
+    "presaleProjectName": "Тут название проекта",
+    "presaleResponsible": "Сергей",
+    "presaleResponsibleId": 123,
+    "presaleSalesChannel": "Какой то канал продаж",
+    "presaleStage": "Этап 1",
+    "presaleStatus": "Какой то статус пресейла"
+  }
+
+]

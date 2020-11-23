@@ -2,6 +2,11 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { GetInfoService} from '../services/get-info.service';
 import { environment} from '../../environments/environment';
+import {CommerceActiveProject} from '../models/CommerceActivProject-model';
+import {CommerceArchiveProject} from '../models/CommerceArchiveProject-model';
+import {PresaleActiveProject} from '../models/PresaleActiveProject-model';
+import {PresaleArchiveProject} from '../models/PresaleArchiveProject-model';
+
 
 @Component({
   selector: 'app-tab4',
@@ -9,15 +14,16 @@ import { environment} from '../../environments/environment';
   styleUrls: ['./tab4.page.scss'],
 })
 
-export class Tab4Page implements OnInit{
+export class Tab4Page implements OnInit {
   @ViewChild('presale', {static: false}) presale: ElementRef;
   searchStr: string = '';
   mobile: boolean = environment.mobile;
   desktop: boolean = environment.desktop;
   date: boolean = false;
-  commerceProjectData: CommerceProjectModel;
-  presaleProjectData: any;
-  stageData: StageModel;
+  commerceActiveProjectData: Array<CommerceActiveProject>;
+  commerceArchiveProjectData: Array<CommerceArchiveProject>;
+  presaleActiveProjectData: Array<PresaleActiveProject>;
+  presaleArchiveProjectData: Array<PresaleArchiveProject>;
   slotToShow: string = 'presale';
   tabToShow: string = 'archive';
   tabToShowCommerce: string = 'arciveCommerce';
@@ -37,40 +43,54 @@ export class Tab4Page implements OnInit{
         console.log(ev.detail.value);
         this.tabToShowCommerce = ev.detail.value;
   }
-  goToDetails(num: number){
+  goToDetails(num: number) {
     this.router.navigate(['/tabs/tab4/presale/' + num]);
   }
-  goToCommercePage(num: number){
+  goToCommercePage(num: number) {
     this.router.navigate(['/tabs/tab4/commerce/' + num]);
   }
   changeFilters() {
-      if (this.selectValue.length === 0) {
-          this.dataService.searchPresaleProject().subscribe((data) =>
-             {
-                 this.presaleProjectData = data;
-             });
+      if (this.tabToShow === 'archive') {
+          if (this.selectValue.length === 0) {
+              this.dataService.getPresaleArchiveProject().subscribe((data) => {
+                  this.presaleArchiveProjectData = data;
+              });
+          } else {
+              this.presaleArchiveProjectData = this.presaleArchiveProjectData.filter(value =>
+                  this.selectValue[0] === value.presaleStage || this.selectValue[1] === value.presaleStage);
+          }
       }
-     else {
-          this.presaleProjectData = this.presaleProjectData.filter( value =>
-          this.selectValue[0] === value.stage || this.selectValue[1] === value.stage);
-          console.log(this.selectValue);
-        }
+      else {
+          if (this.selectValue.length === 0) {
+              this.dataService.getPresaleActiveProject().subscribe((data) => {
+                  this.presaleActiveProjectData = data;
+              });
+          } else {
+              this.presaleActiveProjectData = this.presaleActiveProjectData.filter(value =>
+                  this.selectValue[0] === value.presaleStage || this.selectValue[1] === value.presaleStage);
+          }
+      }
   }
   chooseDate() {
       this.date = !this.date;
   }
   ngOnInit() {
-    this.dataService.searchProject().subscribe((data) =>
-   {
-     this.commerceProjectData = data;
-   });
-    this.dataService.searchStage().subscribe((datas) =>
+    this.dataService.getCommerceActiveProject().subscribe((data) =>
     {
-      this.stageData = datas.slice(datas.length - 1);
+        this.commerceActiveProjectData = data;
     });
-    this.dataService.searchPresaleProject().subscribe((data) =>
+    this.dataService.getCommerceArchiveProject().subscribe((data) =>
     {
-      this.presaleProjectData = data;
+        this.commerceArchiveProjectData = data;
     });
+    this.dataService.getPresaleActiveProject().subscribe((data) =>
+    {
+        this.presaleActiveProjectData = data;
+    });
+    this.dataService.getPresaleArchiveProject().subscribe((data) =>
+    {
+        this.presaleArchiveProjectData = data;
+    });
+    this.slotToShow = 'presale';
   }
 }

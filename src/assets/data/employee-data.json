@@ -9,7 +9,7 @@
     "experience": ["C","python"],
     "note": "string",
     "certificates": ["string"],
-    "comments": "string",
+    "comments": "Achieve the maximum speed possible on the Web Platform today, and take it further, via Web Workers and server-side rendering.\n\nAngular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model.",
     "free": 1 ,
     "activity": [
       {

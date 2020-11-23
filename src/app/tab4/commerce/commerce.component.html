@@ -1,38 +1,50 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="mobile">
   <ion-toolbar color = "primary">
     <ion-buttons slot="start">
       <ion-button (click) = "goBack()">
         Назад
       </ion-button>
     </ion-buttons>
+    <ion-title style="text-align: center;">Коммерция</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        Аккаунт
+      <ion-button (click)="editting();save()">
+        Редактировать
       </ion-button>
     </ion-buttons>
-    <ion-title style="text-align: center;">Коммерция</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-header [translucent]="true" *ngIf="desktop">
+  <ion-toolbar color = "primary">
+    <ion-avatar slot="start">
+      <ion-img src="/assets/icon/logo.png"></ion-img>
+    </ion-avatar>
+    <ion-buttons slot="start"  style="margin-left: 30%; margin-right: 30%">
+      <ion-button [routerLink]="['/tabs/tab1']">Сотрудники</ion-button>
+      <ion-button [routerLink]="['/tabs/tab3']">Вакансии</ion-button>
+      <ion-button [routerLink]="['/tabs/tab4']">Проекты</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
+<ion-content *ngIf="mobile">
+  <ion-grid *ngFor="let project of commerceActiveProject">
     <ion-row>
       <ion-col size-md = "6" offset-md = "3">
        
-            <ion-list>
+            <ion-list *ngIf="edit">
               <ion-item color = "success">
-                <ion-label>ОАО Тммед</ion-label>
+                <ion-label>{{project.projectName}}</ion-label>
               </ion-item>  
               <ion-item>
                 <ion-label>Разработка прототипа мобильного приложения</ion-label>
               </ion-item>  
               <ion-item>
                 <ion-label>Реквезиты договора</ion-label>
-                <ion-note slot="end" color="primary"><p style="font-size: 15px;">4011233453302</p></ion-note>
+                <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{project.requisites}}</p></ion-note>
               </ion-item>  
               <ion-item>
                 <ion-label>Статус договора</ion-label>
-                <ion-select value="st2" okText="Выбрать" cancelText="Скрыть">
+                <ion-select value="st2" okText="Выбрать" cancelText="Скрыть" readonly="true">
                   <ion-select-option value="st1">Статус 1</ion-select-option>
                   <ion-select-option value="st2">Статус 2</ion-select-option>
                   <ion-select-option value="st3">Статус 3</ion-select-option>
@@ -40,19 +52,51 @@
               </ion-item> 
               <ion-item>
                 <ion-label>Дата изменения</ion-label>
-          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+          <ion-datetime value="{{project.changeDate}}" placeholder="Select Date" readonly="true"></ion-datetime>
               </ion-item> 
               <ion-item>
                 <ion-label position="floating">Комментарии к проекту</ion-label>
-                <ion-textarea></ion-textarea>
+                <ion-textarea value="{{project.projectComments}}" readonly="true"></ion-textarea>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Проблемы проекта</ion-label>
-                <ion-textarea></ion-textarea>
+                <ion-textarea value="{{project.projectProblems}}" readonly="true"></ion-textarea>
               </ion-item>
-              <ion-button expand = "full" color = "success">Сохранить</ion-button>
             </ion-list>
-        
+            <ion-list *ngIf="!edit">
+              <ion-item color = "success">
+                <ion-label>{{project.projectName}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Разработка прототипа мобильного приложения</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Реквезиты договора</ion-label>
+                <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{project.requisites}}</p></ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>Статус договора</ion-label>
+                <ion-select value="st2" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="st1">Статус 1</ion-select-option>
+                  <ion-select-option value="st2">Статус 2</ion-select-option>
+                  <ion-select-option value="st3">Статус 3</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Дата изменения</ion-label>
+          <ion-datetime value="{{project.changeDate}}" placeholder="Select Date"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Комментарии к проекту</ion-label>
+                <ion-textarea value="{{project.projectComments}}"></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Проблемы проекта</ion-label>
+                <ion-textarea value="{{project.projectProblems}}"></ion-textarea>
+              </ion-item>
+              <ion-button expand = "full" color = "success" (click)="save()">Сохранить</ion-button>
+            </ion-list>
+
             <ion-list>
               <ion-item  color = "primary">
                 <ion-label>Этапы</ion-label>
@@ -60,13 +104,13 @@
               </ion-item>
             </ion-list>
             <mat-accordion >
-              <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
+              <mat-expansion-panel hideToggle *ngFor="let stage of project.projectCommerceStageItems" >
                 <mat-expansion-panel-header >
                   <mat-panel-title>
-                    {{row.title}}
+                    {{stage.stageName}}
                   </mat-panel-title>
                   <mat-panel-description style="color: black;">
-                    {{row.stageStatus}}
+                    {{stage.stageStatus}}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                   <ion-list >
@@ -76,47 +120,197 @@
                     </ion-item>
                     <ion-item>
                       <ion-label>Реквезиты</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.reqi}}</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.stageRequisites}}</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Срок окончания этапа</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.stageEndDate}}" placeholder="Select Date" readonly="true"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Дата подписания акта</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.dateOfSigningTheAct}}" placeholder="Select Date" readonly="true"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма по этапу (с НДС)</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum1}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfStage}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum2}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfPaySubcontractors}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Итого</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum3}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumFinal}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Дата оплаты по договору</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date" readonly="true"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Фактическая дата оплаты</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date" readonly="true"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Комментарии этапа</ion-label>
-                      <ion-textarea></ion-textarea>
+                      <ion-textarea value="{{stage.stageComments}}" readonly="true"></ion-textarea>
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Проблемы этапа</ion-label>
-                      <ion-textarea [(ngModel)]="row.problem"></ion-textarea>
+                      <ion-textarea value="{{stage.stageProblem}}" readonly="true"></ion-textarea>
                     </ion-item>
                   </ion-list>
               </mat-expansion-panel>
             </mat-accordion>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-content *ngIf="desktop">
+  <ion-grid *ngFor="let project of commerceActiveProject">
+    <ion-row>
+      <ion-col size-md = "10" offset-md = "1">
+
+            <ion-list >
+              <ion-item color = "success">
+                <ion-label>{{project.projectName}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Разработка прототипа мобильного приложения</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Реквезиты договора</ion-label>
+                <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{project.requisites}}</p></ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>Статус договора</ion-label>
+                <ion-select value="st2" okText="Выбрать" cancelText="Скрыть">
+                  <ion-select-option value="st1">Статус 1</ion-select-option>
+                  <ion-select-option value="st2">Статус 2</ion-select-option>
+                  <ion-select-option value="st3">Статус 3</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>Дата изменения</ion-label>
+          <ion-datetime value="{{project.changeDate}}" placeholder="Select Date"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Комментарии к проекту</ion-label>
+                <ion-textarea value="{{project.projectComments}}"></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Проблемы проекта</ion-label>
+                <ion-textarea value="{{project.projectProblems}}"></ion-textarea>
+              </ion-item>
+              <ion-button expand = "full" color = "success">Сохранить</ion-button>
+            </ion-list>
+
+            <ion-list>
+              <ion-item  color = "primary">
+                <ion-label>Этапы</ion-label>
+                <ion-button color ="success" fill = "solid"  (click) = "showModal()">Добавить этап</ion-button>
+              </ion-item>
+            </ion-list>
+            <mat-accordion >
+              <mat-expansion-panel hideToggle *ngFor="let stage of project.projectCommerceStageItems" >
+                <mat-expansion-panel-header >
+                  <mat-panel-title>
+                    {{stage.stageName}}
+                  </mat-panel-title>
+                  <mat-panel-description style="color: black;">
+                    {{stage.stageStatus}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                  <ion-list >
+                    <ion-item color = "success">
+                      <ion-label> Статус акта</ion-label>
+                      <ion-note slot="end"><p style="font-size: 15px; color:white;">{{stage.stageStatusAct}}</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Реквезиты</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.stageRequisites}}</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Срок окончания этапа</ion-label>
+                      <ion-datetime value="{{stage.stageEndDate}}" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Дата подписания акта</ion-label>
+                      <ion-datetime value="{{stage.dateOfSigningTheAct}}" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Сумма по этапу (с НДС)</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfStage}} $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfPaySubcontractors}} $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Итого</ion-label>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumFinal}} $</p></ion-note>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Дата оплаты по договору</ion-label>
+                      <ion-datetime value="{{stage.payDayInDoc}}" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Фактическая дата оплаты</ion-label>
+                      <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Комментарии этапа</ion-label>
+                      <ion-textarea value="{{stage.stageComments}}"></ion-textarea>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Проблемы этапа</ion-label>
+                      <ion-textarea [(ngModel)]="stage.stageProblem"></ion-textarea>
+                    </ion-item>
+                  </ion-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+        <br>
+        <ion-list>
+          <ion-item  color = "primary">
+            <ion-label>Файлы</ion-label>
+            <ion-button color ="success" fill = "solid"  (click) = "showModal()">Загрузить файл</ion-button>
+          </ion-item>
+        </ion-list>
+        <ion-list >
+          <ion-item>
+            <ion-label>
+              №
+            </ion-label>
+            <ion-label>
+              Имя файла
+            </ion-label>
+            <ion-label>
+               Место загрузки файла
+            </ion-label>
+            <ion-label>
+              Описание
+            </ion-label>
+            <ion-label>
+
+            </ion-label>
+          </ion-item>
+          <ion-item *ngFor="let file of project.projectCommerceFileItem">
+            <ion-label>
+              {{file.fileNumber}}
+            </ion-label>
+            <ion-label>
+              {{file.fileName}}
+            </ion-label>
+            <ion-label>
+              {{file.fileDirection}}
+            </ion-label>
+            <ion-label>
+              {{file.fileDescription}}
+            </ion-label>
+            <ion-label>
+              <ion-img src=" /assets/icon/basket.png " style="width: 22px ; height: 24px"></ion-img>
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

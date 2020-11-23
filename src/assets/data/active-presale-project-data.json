@@ -1,0 +1,21 @@
+[
+  {
+    "id": 22,
+    "presaleChangeTime": "10.10.2020" ,
+    "presaleContractualTerm": "10.10.2020" ,
+    "presaleCustomer": "Илон Маск" ,
+    "presaleDirectionId" : 123 ,
+    "presaleDirectionName": "Направление 1",
+    "presaleIntermediateResult": "Какие то результаты",
+    "presaleNotes": "Какие то примечания",
+    "presalePlanSale": 1432,
+    "presalePlanTerm": "10.10.2020",
+    "presaleProjectName": "Тут название проекта",
+    "presaleResponsible": "Николай",
+    "presaleResponsibleId": 123,
+    "presaleSalesChannel": "Какой то канал продаж",
+    "presaleStage": "Этап 1",
+    "presaleStatus": "Какой то статус пресейла"
+  }
+
+]

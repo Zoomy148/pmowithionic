@@ -2,12 +2,14 @@ import { Component} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {ComponentCanDeactivate} from '../../guards/exit.guard';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'modal-page',
   templateUrl: './modalPage.component.html'
 })
-export class ModalPage {
+export class ModalPage implements ComponentCanDeactivate{
     stage = {
         name:  '',
         stage_status: '',
@@ -27,7 +29,20 @@ export class ModalPage {
     constructor(private mdlCntrl: ModalController,
                 public http: HttpClient,
                 public router: Router) {}
-    async close() {
+    saved: boolean = false;
+    save(){
+        this.saved = true;
+    }
+                async close() {
         await this.mdlCntrl.dismiss(this.stage);
+    }
+
+    canDeactivate(): boolean | Observable<boolean> {
+        if (!this.saved){
+            return confirm('Вы хотите покинуть страницу?');
+        }
+        else{
+            return true;
+        }
     }
 }

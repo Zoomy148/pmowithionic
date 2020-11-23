@@ -34,6 +34,7 @@ export class UserpageComponent implements OnInit {
   newExp: string = '';
   editExp: boolean = false;
   number: string;
+  editProfile: boolean = true;
   constructor(private route: ActivatedRoute,
               private getUserService: GetInfoService,
               public alertController: AlertController,
@@ -45,12 +46,14 @@ export class UserpageComponent implements OnInit {
     this.getUserService.search().subscribe(data => {
       this.user = data.filter( vacancy => this.number === vacancy.id );
       this.users = data.filter( vacancy => this.number === vacancy.id );
-      for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
-        this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
-      for (let i = 0 ; i < this.users.activity[1].project.length ; i++) {
-        this.barChartLabels[1].push( this.users.activity[1].project[i].projectname) ; }
-      for (let i = 0 ; i < this.users.activity[0].project.length ; i++) {
-        this.barChartLabels[0].push( this.users.activity[0].project[i].projectname) ; }
+      for(let i = 0 ; i < this.user.length ; i++){
+        for (let k = 0 ; k < this.user[i].activity.length ; k++){
+          for ( let j = 0; j < this.user[i].activity[k].project.length; j++){
+            this.barChartLabels[k].push(this.user[i].activity[k].project[j].projectname);
+            console.log('projectname' in this.users[0].activity[0].project[0]);
+          }
+        }
+      }
     });
     this.getUserService.searchProject().subscribe(projectData => {
       this.projects = projectData;
@@ -62,6 +65,9 @@ export class UserpageComponent implements OnInit {
   }
   editExperience() {
     this.editExp = !this.editExp;
+  }
+  editingProfile() {
+    this.editProfile = !this.editProfile;
   }
   goBack() {
     this.location.back();

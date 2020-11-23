@@ -18,13 +18,13 @@
     <ion-title>
       Вакансии
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="['add-new-vacancy']">Добавить</ion-button>
-    </ion-buttons>
+
+      <ion-button [routerLink]="['add-new-vacancy']" slot="end">Добавить</ion-button>
+
   </ion-toolbar>
 </ion-header>
 <ion-toolbar>
-  <ion-segment (ionChange)="segmentChanged($event)" style="width: 90%;">
+  <ion-segment [(ngModel)]="slotToShow" style="width: 90%;">
     <ion-segment-button value="new_vacancy" >
       <ion-label>Вакансии</ion-label>
     </ion-segment-button>

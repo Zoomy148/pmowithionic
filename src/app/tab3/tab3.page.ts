@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetInfoService } from '../services/get-info.service';
 import { environment} from '../../environments/environment';
+import {UserModel} from '../models/user.model';
 
 @Component({
   selector: 'app-tab3',

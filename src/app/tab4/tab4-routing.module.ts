@@ -4,6 +4,7 @@ import { CommerceComponent } from './commerce/commerce.component';
 import { PresaleComponent } from './presale/presale.component';
 
 import { Tab4Page } from './tab4.page';
+import {ExitAboutGuard} from '../guards/exit.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'commerce/:id',
-    component: CommerceComponent
+    component: CommerceComponent,
+    canDeactivate: [ExitAboutGuard]
   }
 ];
 

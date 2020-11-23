@@ -12,14 +12,14 @@
 </ion-header>
 <ion-header [translucent]="true" *ngIf="mobile">
   <ion-toolbar color = "primary">
-    <ion-title>
-      Вакансии
+    <ion-title style="text-align: center;">
+      Проекты
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-toolbar *ngIf="mobile">
-  <ion-segment  (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="presale">
+  <ion-segment  [(ngModel)]="slotToShow" >
+    <ion-segment-button value="presale" >
       <ion-label>Пресейл</ion-label>
     </ion-segment-button>
     <ion-segment-button value="commerce">
@@ -33,32 +33,32 @@
     <ion-row>
       <ion-col size-md ="6" offset-md = "3">
         <ion-searchbar ></ion-searchbar>
-        <ion-card #presale *ngFor="let row of presaleProjectData ">
+        <ion-card #presale *ngFor="let project of presaleActiveProjectData ">
           <ion-card-header>Пресейл</ion-card-header>
           <ion-card-content>
             <ion-list>
-              <ion-item button (click) = "goToDetails(row.id)" color = "success">
-                <ion-label>{{row.direction}}</ion-label>
+              <ion-item button (click) = "goToDetails(project.id)" color = "success">
+                <ion-label>{{project.presaleDirectionName}}</ion-label>
               </ion-item>
               <ion-item>
                 <ion-label>Заказчик</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.customer}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.presaleCustomer}}</p></ion-note>
               </ion-item>
               <ion-item>
                 <ion-label>Проект</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.project}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.presaleProjectName}}</p></ion-note>
               </ion-item>
               <ion-item>
                 <ion-label>Ответственный за пресейл</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.presaleResponsible}}</p></ion-note>
               </ion-item>
               <ion-item>
                 <ion-label>Этап пресейла</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.stage}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.presaleStage}}</p></ion-note>
               </ion-item>
               <ion-item>
                 <ion-label>Статус</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.status}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.presaleStatus}}</p></ion-note>
               </ion-item>
             </ion-list>
           </ion-card-content>
@@ -72,20 +72,20 @@
     <ion-row>
       <ion-col size-md ="6" offset-md = "3">
         <ion-searchbar [(ngModel)] = "searchStr"></ion-searchbar>
-        <ion-card *ngFor="let row of projectData | search: searchStr">
+        <ion-card *ngFor="let project of commerceActiveProjectData ">
           <ion-card-header>Коммерция</ion-card-header>
           <ion-card-content>
             <ion-list>
-              <ion-item button (click) = "goToCommercePage(row.id)" color = "success">
-                <ion-label>{{row.name}}</ion-label>
+              <ion-item button (click) = "goToCommercePage(project.id)" color = "success">
+                <ion-label>{{project.projectName}}</ion-label>
               </ion-item>  
               <ion-item>
                 <ion-label>Направление</ion-label>
-                <ion-note slot="end" color="primary"><p>Направление 1</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.projectDirectionName}}</p></ion-note>
               </ion-item>  
               <ion-item>
                 <ion-label>Руководитель</ion-label>
-                <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                <ion-note slot="end" color="primary"><p>{{project.projectLeaderName}}</p></ion-note>
               </ion-item>  
               <ion-item>
                 <ion-label>Активный этап</ion-label>
@@ -96,59 +96,59 @@
                 <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
               </ion-item>
               <mat-accordion >
-                <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
+                <mat-expansion-panel hideToggle *ngFor="let stage of project.projectCommerceStageItems" >
                   <mat-expansion-panel-header >
                     <mat-panel-title>
-                      {{row.title}}
+                      {{stage.stageName}}
                     </mat-panel-title>
                     <mat-panel-description style="color: black;">
-                      {{row.stageStatus}}
+                      {{stage.stageStatus}}
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                   <ion-list >
                     <ion-item color = "success">
                       <ion-label> Статус акта</ion-label>
-                      <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
+                      <ion-note slot="end"><p style="font-size: 15px; color:white;">{{stage.stageStatusAct}}</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Реквезиты</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.reqi}}</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.stageRequisites}}</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Срок окончания этапа</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.stageEndDate}}" placeholder="Select Date"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Дата подписания акта</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.dateOfSigningTheAct}}" placeholder="Select Date"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма по этапу (с НДС)</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum1}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfStage}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum2}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfPaySubcontractors}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Итого</ion-label>
-                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum3}} $</p></ion-note>
+                      <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumFinal}} $</p></ion-note>
                     </ion-item>
                     <ion-item>
                       <ion-label>Дата оплаты по договору</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.payDayInDoc}}" placeholder="Select Date"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label>Фактическая дата оплаты</ion-label>
-                      <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                      <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date"></ion-datetime>
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Комментарии этапа</ion-label>
-                      <ion-textarea></ion-textarea>
+                      <ion-textarea value="{{stage.stageComments}}"></ion-textarea>
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Проблемы этапа</ion-label>
-                      <ion-textarea [(ngModel)]="row.problem"></ion-textarea>
+                      <ion-textarea value="{{stage.stageProblem}}"></ion-textarea>
                     </ion-item>
                   </ion-list>
                 </mat-expansion-panel>
@@ -201,7 +201,7 @@
             </ion-button >
             <ion-button >
               Этап
-              <ion-select multiple="true" cancelText="Отменить" okText="Сохранить" (ionChange)="changeFilters()" [(ngModel)]="selectValue" id="selector">
+              <ion-select multiple="true" cancelText="Отменить" okText="Сохранить" (ionChange)="changeFilters()"  [(ngModel)]="selectValue" id="selector">
                 <ion-select-option value="Этап1">Этап1</ion-select-option>
                 <ion-select-option value="Этап2">Этап 2 </ion-select-option>
                 <ion-select-option value="xcheese">Этап 3 </ion-select-option>
@@ -225,32 +225,32 @@
               </mat-expansion-panel>
             </mat-accordion>
           </ion-toolbar>
-          <ion-card  *ngFor="let row of presaleProjectData ">
+          <ion-card  *ngFor="let project of presaleArchiveProjectData ">
             <ion-card-header>Пресейл</ion-card-header>
             <ion-card-content>
               <ion-list>
-                <ion-item button (click) = "goToDetails(row.id)" color = "success">
-                  <ion-label>{{row.direction}}</ion-label>
+                <ion-item button (click) = "goToDetails(project.id)" color = "success">
+                  <ion-label>{{project.presaleDirectionName}}</ion-label>
                 </ion-item>
                 <ion-item>
                   <ion-label>Заказчик</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.customer}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.presaleCustomer}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Проект</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.project}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.presaleProjectName}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Ответственный за пресейл</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.presaleResponsible}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Этап пресейла</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.stage}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.presaleStage}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Статус</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.status}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.presaleStatus}}</p></ion-note>
                 </ion-item>
               </ion-list>
             </ion-card-content>
@@ -281,32 +281,71 @@
             </ion-segment>
            </ion-buttons>
            </ion-toolbar>
-            <ion-card  *ngFor="let row of presaleProjectData ">
+            <ion-toolbar>
+              <mat-accordion >
+                <mat-expansion-panel hideToggle >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      Фильтры
+                    </mat-panel-title>
+                    <mat-panel-description style="color: black;">
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ion-button  >
+                    Ответственный
+                  </ion-button >
+                  <ion-button >
+                    Этап
+                    <ion-select multiple="true" cancelText="Отменить" okText="Сохранить" (ionChange)="changeFilters()"  [(ngModel)]="selectValue" >
+                      <ion-select-option value="Этап1">Этап1</ion-select-option>
+                      <ion-select-option value="Этап2">Этап 2 </ion-select-option>
+                      <ion-select-option value="xcheese">Этап 3 </ion-select-option>
+                      <ion-select-option value="peppers">Этап 4</ion-select-option>
+                    </ion-select>
+                  </ion-button>
+                  <ion-button (click)="chooseDate()">
+                    Дата
+                  </ion-button>
+                  <ion-buttons *ngIf="date" >
+                    <ion-item >
+                      <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете начальную дату"></ion-datetime>
+                    </ion-item>
+                    <ion-item style="margin-left: 20px" >
+                      <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете конечную дату"></ion-datetime>
+                    </ion-item>
+                    <ion-button color="primary" style="margin-left: 20px">
+                      Применить
+                    </ion-button>
+                  </ion-buttons>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </ion-toolbar>
+            <ion-card  *ngFor="let project of presaleActiveProjectData ">
               <ion-card-header>Пресейл</ion-card-header>
               <ion-card-content>
                 <ion-list>
-                  <ion-item button (click) = "goToDetails(row.id)" color = "success">
-                    <ion-label>{{row.direction}} 11111111111</ion-label>
+                  <ion-item button (click) = "goToDetails(project.id)" color = "success">
+                    <ion-label>{{project.presaleDirectionName}} </ion-label>
                   </ion-item>
                   <ion-item>
                     <ion-label>Заказчик</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.customer}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.presaleCustomer}}</p></ion-note>
                   </ion-item>
                   <ion-item>
                     <ion-label>Проект</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.project}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.presaleProjectName}}</p></ion-note>
                   </ion-item>
                   <ion-item>
                     <ion-label>Ответственный за пресейл</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.presaleResponsible}}</p></ion-note>
                   </ion-item>
                   <ion-item>
                     <ion-label>Этап пресейла</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.stage}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.presaleStage}}</p></ion-note>
                   </ion-item>
                   <ion-item>
                     <ion-label>Статус</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.status}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.presaleStatus}}</p></ion-note>
                   </ion-item>
                 </ion-list>
               </ion-card-content>
@@ -338,22 +377,60 @@
                 <ion-label>В работе</ion-label>
               </ion-segment>
             </ion-buttons>
-
           </ion-toolbar>
-          <ion-card *ngFor="let row of commerceProjectData | search: searchStr">
+          <ion-toolbar>
+            <mat-accordion >
+              <mat-expansion-panel hideToggle >
+                <mat-expansion-panel-header >
+                  <mat-panel-title>
+                    Фильтры
+                  </mat-panel-title>
+                  <mat-panel-description style="color: black;">
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ion-button  >
+                  Ответственный
+                </ion-button >
+                <ion-button >
+                  Этап
+                  <ion-select multiple="true" cancelText="Отменить" okText="Сохранить"  [(ngModel)]="selectValue" >
+                    <ion-select-option value="Этап1">Этап1</ion-select-option>
+                    <ion-select-option value="Этап2">Этап 2 </ion-select-option>
+                    <ion-select-option value="xcheese">Этап 3 </ion-select-option>
+                    <ion-select-option value="peppers">Этап 4</ion-select-option>
+                  </ion-select>
+                </ion-button>
+                <ion-button (click)="chooseDate()">
+                  Дата
+                </ion-button>
+                <ion-buttons *ngIf="date" >
+                  <ion-item >
+                    <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете начальную дату"></ion-datetime>
+                  </ion-item>
+                  <ion-item style="margin-left: 20px" >
+                    <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете конечную дату"></ion-datetime>
+                  </ion-item>
+                  <ion-button color="primary" style="margin-left: 20px">
+                    Применить
+                  </ion-button>
+                </ion-buttons>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </ion-toolbar>
+          <ion-card *ngFor="let project of commerceArchiveProjectData ">
             <ion-card-header>Коммерция</ion-card-header>
             <ion-card-content>
               <ion-list>
-                <ion-item button (click) = "goToCommercePage(row.id)" color = "success">
-                  <ion-label>{{row.name}}</ion-label>
+                <ion-item button (click) = "goToCommercePage(project.id)" color = "success">
+                  <ion-label>{{project.projectName}}</ion-label>
                 </ion-item>
                 <ion-item>
                   <ion-label>Направление</ion-label>
-                  <ion-note slot="end" color="primary"><p>Направление 1</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.projectDirectionName}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Руководитель</ion-label>
-                  <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                  <ion-note slot="end" color="primary"><p>{{project.projectLeaderName}}</p></ion-note>
                 </ion-item>
                 <ion-item>
                   <ion-label>Активный этап</ion-label>
@@ -364,7 +441,7 @@
                   <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
                 </ion-item>
                 <mat-accordion >
-                  <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
+                  <mat-expansion-panel hideToggle *ngFor="let stage of project.projectCommerceStageItems" >
                     <mat-expansion-panel-header >
                       <mat-panel-title>
                         Последний этап
@@ -373,51 +450,51 @@
                       </mat-panel-description>
                     </mat-expansion-panel-header>
                     <ion-list >
-                      {{row.title}} <br>
-                      {{row.stageStatus}}
+                      {{stage.stageName}} <br>
+                      {{stage.stageStatus}}
                       <ion-item color = "success">
                         <ion-label> Статус акта</ion-label>
-                        <ion-note slot="end"><p style="font-size: 15px; color:white;">Подписан</p></ion-note>
+                        <ion-note slot="end"><p style="font-size: 15px; color:white;">{{stage.stageStatusAct}}</p></ion-note>
                       </ion-item>
                       <ion-item>
                         <ion-label>Реквезиты</ion-label>
-                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.reqi}}</p></ion-note>
+                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.stageRequisites}}</p></ion-note>
                       </ion-item>
                       <ion-item>
                         <ion-label>Срок окончания этапа</ion-label>
-                        <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                        <ion-datetime value="{{stage.stageEndDate}}" placeholder="Select Date"></ion-datetime>
                       </ion-item>
                       <ion-item>
                         <ion-label>Дата подписания акта</ion-label>
-                        <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                        <ion-datetime value="{{stage.dateOfSigningTheAct}}" placeholder="Select Date"></ion-datetime>
                       </ion-item>
                       <ion-item>
                         <ion-label>Сумма по этапу (с НДС)</ion-label>
-                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum1}} $</p></ion-note>
+                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfStage}} $</p></ion-note>
                       </ion-item>
                       <ion-item>
                         <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
-                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum2}} $</p></ion-note>
+                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfPaySubcontractors}} $</p></ion-note>
                       </ion-item>
                       <ion-item>
                         <ion-label>Итого</ion-label>
-                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum3}} $</p></ion-note>
+                        <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumFinal}} $</p></ion-note>
                       </ion-item>
                       <ion-item>
                         <ion-label>Дата оплаты по договору</ion-label>
-                        <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                        <ion-datetime value="{{stage.payDayInDoc}}" placeholder="Select Date"></ion-datetime>
                       </ion-item>
                       <ion-item>
                         <ion-label>Фактическая дата оплаты</ion-label>
-                        <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                        <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date"></ion-datetime>
                       </ion-item>
                       <ion-item>
                         <ion-label position="floating">Комментарии этапа</ion-label>
-                        <ion-textarea></ion-textarea>
+                        <ion-textarea value="{{stage.stageComments}}"></ion-textarea>
                       </ion-item>
                       <ion-item>
                         <ion-label position="floating">Проблемы этапа</ion-label>
-                        <ion-textarea [(ngModel)]="row.problem"></ion-textarea>
+                        <ion-textarea value="{{stage.stageProblem}}"></ion-textarea>
                       </ion-item>
                     </ion-list>
                   </mat-expansion-panel>
@@ -452,12 +529,51 @@
                 </ion-segment>
               </ion-buttons>
             </ion-toolbar>
-            <ion-card *ngFor="let row of projectData | search: searchStr">
+            <ion-toolbar>
+              <mat-accordion >
+                <mat-expansion-panel hideToggle >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      Фильтры
+                    </mat-panel-title>
+                    <mat-panel-description style="color: black;">
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ion-button  >
+                    Ответственный
+                  </ion-button >
+                  <ion-button >
+                    Этап
+                    <ion-select multiple="true" cancelText="Отменить" okText="Сохранить"  [(ngModel)]="selectValue" >
+                      <ion-select-option value="Этап1">Этап1</ion-select-option>
+                      <ion-select-option value="Этап2">Этап 2 </ion-select-option>
+                      <ion-select-option value="xcheese">Этап 3 </ion-select-option>
+                      <ion-select-option value="peppers">Этап 4</ion-select-option>
+                    </ion-select>
+                  </ion-button>
+                  <ion-button (click)="chooseDate()">
+                    Дата
+                  </ion-button>
+                  <ion-buttons *ngIf="date" >
+                    <ion-item >
+                      <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете начальную дату"></ion-datetime>
+                    </ion-item>
+                    <ion-item style="margin-left: 20px" >
+                      <ion-datetime displayFormat="DD MM YYYY" type="datetime-local" placeholder="Выбирете конечную дату"></ion-datetime>
+                    </ion-item>
+                    <ion-button color="primary" style="margin-left: 20px">
+                      Применить
+                    </ion-button>
+                  </ion-buttons>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </ion-toolbar>
+            <ion-card *ngFor="let project of commerceActiveProjectData ">
               <ion-card-header>Коммерция</ion-card-header>
               <ion-card-content>
                 <ion-list>
-                  <ion-item button (click) = "goToCommercePage(row.id)" color = "success">
-                    <ion-label>{{row.name}}</ion-label>
+                  <ion-item button (click) = "goToCommercePage(project.id)" color = "success">
+                    <ion-label>{{project.projectName}}</ion-label>
                   </ion-item>
                   <ion-item>
                     <ion-label>Направление</ion-label>
@@ -465,7 +581,7 @@
                   </ion-item>
                   <ion-item>
                     <ion-label>Руководитель</ion-label>
-                    <ion-note slot="end" color="primary"><p>{{row.leader}}</p></ion-note>
+                    <ion-note slot="end" color="primary"><p>{{project.projectLeaderName}}</p></ion-note>
                   </ion-item>
                   <ion-item>
                     <ion-label>Активный этап</ion-label>
@@ -476,13 +592,13 @@
                     <ion-note slot="end" color="primary"><p>Статус 1</p></ion-note>
                   </ion-item>
                   <mat-accordion >
-                    <mat-expansion-panel hideToggle *ngFor="let row of stageData" >
+                    <mat-expansion-panel hideToggle *ngFor="let stage of project.projectCommerceStageItems" >
                       <mat-expansion-panel-header >
                         <mat-panel-title>
-                          {{row.title}}
+                          {{stage.stageName}}
                         </mat-panel-title>
                         <mat-panel-description style="color: black;">
-                          {{row.stageStatus}}
+                          {{stage.stageStatus}}
                         </mat-panel-description>
                       </mat-expansion-panel-header>
                       <ion-list >
@@ -492,43 +608,43 @@
                         </ion-item>
                         <ion-item>
                           <ion-label>Реквезиты</ion-label>
-                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.reqi}}</p></ion-note>
+                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.stageRequisites}}</p></ion-note>
                         </ion-item>
                         <ion-item>
                           <ion-label>Срок окончания этапа</ion-label>
-                          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                          <ion-datetime value="{{stage.stageEndDate}}" placeholder="Select Date"></ion-datetime>
                         </ion-item>
                         <ion-item>
                           <ion-label>Дата подписания акта</ion-label>
-                          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                          <ion-datetime value="{{stage.dateOfSigningTheAct}}" placeholder="Select Date"></ion-datetime>
                         </ion-item>
                         <ion-item>
                           <ion-label>Сумма по этапу (с НДС)</ion-label>
-                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum1}} $</p></ion-note>
+                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfStage}} $</p></ion-note>
                         </ion-item>
                         <ion-item>
                           <ion-label>Сумма выплат субподрядчикам, лицензиям и т.д.</ion-label>
-                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum2}} $</p></ion-note>
+                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumOfPaySubcontractors}} $</p></ion-note>
                         </ion-item>
                         <ion-item>
                           <ion-label>Итого</ion-label>
-                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{row.sum3}} $</p></ion-note>
+                          <ion-note slot="end" color="primary"><p style="font-size: 15px;">{{stage.sumFinal}} $</p></ion-note>
                         </ion-item>
                         <ion-item>
                           <ion-label>Дата оплаты по договору</ion-label>
-                          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                          <ion-datetime value="{{stage.payDayInDoc}}" placeholder="Select Date"></ion-datetime>
                         </ion-item>
                         <ion-item>
                           <ion-label>Фактическая дата оплаты</ion-label>
-                          <ion-datetime value="2020-10-19" placeholder="Select Date"></ion-datetime>
+                          <ion-datetime value="{{stage.payDayInFact}}" placeholder="Select Date"></ion-datetime>
                         </ion-item>
                         <ion-item>
                           <ion-label position="floating">Комментарии этапа</ion-label>
-                          <ion-textarea></ion-textarea>
+                          <ion-textarea value="{{stage.stageComments}}"></ion-textarea>
                         </ion-item>
                         <ion-item>
                           <ion-label position="floating">Проблемы этапа</ion-label>
-                          <ion-textarea [(ngModel)]="row.problem"></ion-textarea>
+                          <ion-textarea value="{{stage.stageProblem}}"></ion-textarea>
                         </ion-item>
                       </ion-list>
                     </mat-expansion-panel>
