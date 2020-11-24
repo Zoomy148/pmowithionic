@@ -11,6 +11,7 @@ import { ProjectComponent } from './component/project/project.component';
 import { ProjectdetailsComponent } from './component/projectdetails/projectdetails.component';
 import { SearchPipe } from './services/search.pipe';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {ExitAboutGuard} from '../guards/exit.guard';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         ProjectComponent,
         ProjectdetailsComponent,
         SearchPipe
-    ]
+    ],
+    providers: [ExitAboutGuard]
 })
 export class Tab1PageModule {}

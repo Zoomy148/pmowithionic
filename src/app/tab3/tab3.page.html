@@ -19,7 +19,7 @@
       Вакансии
     </ion-title>
 
-      <ion-button [routerLink]="['add-new-vacancy']" slot="end">Добавить</ion-button>
+      <ion-button [routerLink]="['add-new-vacancy']" slot="end"><ion-icon name="add-outline"></ion-icon></ion-button>
 
   </ion-toolbar>
 </ion-header>
@@ -107,7 +107,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size-md = "9" offset-md = "1">
-          <h1>Вакансии <ion-button class="add-button" [routerLink]="['add-new-vacancy']">Добавить вакансию</ion-button></h1>
+          <h1>Вакансии <ion-button class="add-button" [routerLink]="['add-new-vacancy']"><ion-icon name="add-outline"></ion-icon></ion-button></h1>
           <ion-card *ngFor = "let vacancy of vacancyList">
             <ion-card-header>
               <a [routerLink] = "['vacancy', vacancy.id ]">

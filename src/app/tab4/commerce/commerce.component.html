@@ -2,13 +2,13 @@
   <ion-toolbar color = "primary">
     <ion-buttons slot="start">
       <ion-button (click) = "goBack()">
-        Назад
+        <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title style="text-align: center;">Коммерция</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="editting();save()">
-        Редактировать
+        <ion-icon name="create"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -94,13 +94,13 @@
                 <ion-label position="floating">Проблемы проекта</ion-label>
                 <ion-textarea value="{{project.projectProblems}}"></ion-textarea>
               </ion-item>
-              <ion-button expand = "full" color = "success" (click)="save()">Сохранить</ion-button>
+              <ion-button expand = "full" color = "success" (click)="save(); editting()">Сохранить</ion-button>
             </ion-list>
 
             <ion-list>
               <ion-item  color = "primary">
                 <ion-label>Этапы</ion-label>
-                <ion-button color ="success" fill = "solid"  (click) = "showModal()">Добавить этап</ion-button>
+                <ion-button (click) = "showModal()"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
               </ion-item>
             </ion-list>
             <mat-accordion >

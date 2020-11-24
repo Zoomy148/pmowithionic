@@ -6,6 +6,8 @@ import {Location} from '@angular/common';
 import { ModalController , } from '@ionic/angular';
 import {UserModalComponent} from './user-modal.component';
 import {environment} from '../../../../environments/environment';
+import {ComponentCanDeactivate} from '../../../guards/exit.guard';
+import {Observable} from 'rxjs';
 
 
 
@@ -93,6 +95,14 @@ export class UserpageComponent implements OnInit {
   }
   deleteExp(id: number){
     this.users.experience.splice(id, 1);
+  }
+  canDeactivate(): boolean | Observable<boolean> {
+    if (!this.editProfile){
+      return confirm('Данные не будут сохранены, вы уверены, что хотите покинуть страницу?');
+    }
+    else{
+      return true;
+    }
   }
   async presentAlert(id: number) {
     const alert = await this.alertController.create({

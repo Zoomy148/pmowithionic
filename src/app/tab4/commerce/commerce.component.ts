@@ -66,7 +66,7 @@ export class CommerceComponent implements OnInit, ComponentCanDeactivate {
   }
   canDeactivate(): boolean | Observable<boolean> {
     if (!this.saved){
-      return confirm('Вы хотите покинуть страницу?');
+      return confirm('Данные не будут сохранены, вы уверены, что хотите покинуть страницу?,');
     }
     else{
       return true;
