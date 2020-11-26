@@ -35,7 +35,6 @@ export class Tab1Page implements OnInit {
         for (let k = 0 ; k < this.user[i].activity.length ; k++){
           for ( let j = 0; j < this.user[i].activity[k].project.length; j++){
             this.barChartLabels[i].push(this.user[i].activity[k].project[j].projectname);
-            console.log(this.barChartLabels);
           }
         }
       }

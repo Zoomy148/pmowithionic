@@ -17,11 +17,26 @@
         "project": [
           {
             "projectname": "ПМО",
-            "busy": "70"
+            "busy": 20
+          },
+          {
+            "projectname": "KFC",
+            "busy": 20
+          },
+          {
+            "projectname": "Mcdonalds",
+            "busy": 20
+          },
+          {
+            "projectname": "BK",
+            "busy": 20
+          },
+          {
+            "projectname": "TacoBell",
+            "busy": 20
           }
         ]
       }
-
     ]
   },
   {
@@ -42,11 +57,11 @@
         "project": [
           {
             "projectname": "ПМО",
-            "busy": "70"
+            "busy": 70
           } ,
           {
             "projectname": "KFC",
-            "busy": "30"
+            "busy": 30
           }
         ]
       } ,
@@ -55,7 +70,15 @@
         "project": [
           {
             "projectname": "ККСО",
-            "busy": "70"
+            "busy": 30
+          },
+          {
+            "projectname": "KFC",
+            "busy": 30
+          },
+          {
+            "projectname": "TIMMED",
+            "busy": 40
           }
         ]
       }
@@ -72,7 +95,7 @@
     "note": "123",
     "certificates": "есть диплои об окончании школы (без 3) ",
     "comments": "string",
-    "busy": "37%",
+    "busy": 37,
     "free": 0
   }
 

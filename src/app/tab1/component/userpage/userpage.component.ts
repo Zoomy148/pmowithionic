@@ -19,7 +19,7 @@ import {Observable} from 'rxjs';
 export class UserpageComponent implements OnInit {
   mobile: boolean = environment.mobile;
   desktop: boolean = environment.desktop;
-  public barChartLabels = [[],[],[],[]];
+  public barChartLabels = [[],[],[],[],[]];
   public barChartType = 'doughnut';
   public barChartLegend = true;
   public barChartData = [
@@ -29,6 +29,9 @@ export class UserpageComponent implements OnInit {
     legend: {position: 'left'}
   };
   hours = [];
+  hours1 = [];
+  hours2 = [];
+  hours3 = {};
   projects: [];
   users: any;
   user = [];
@@ -52,18 +55,25 @@ export class UserpageComponent implements OnInit {
         for (let k = 0 ; k < this.user[i].activity.length ; k++){
           for ( let j = 0; j < this.user[i].activity[k].project.length; j++){
             this.barChartLabels[k].push(this.user[i].activity[k].project[j].projectname);
-            console.log('projectname' in this.users[0].activity[0].project[0]);
           }
         }
       }
     });
-    this.getUserService.searchProject().subscribe(projectData => {
-      this.projects = projectData;
-      this.hours = this.projects.map((el) => {
-        return el['part'];
+    this.getUserService.search().subscribe(projectData => {
+      this.projects = projectData.filter(vacancy => this.number === vacancy.id ) ;
+      this.hours1 = this.projects.map((el) => {
+        return  el['activity'];
+      }).map((elem) => {
+        return elem['project'];
       });
-      this.barChartData = [{data: [parseInt(this.hours[0]), parseInt(this.hours[1]), parseInt(this.hours[2])]}];
-    });
+      for ( let i = 0 ; i < this.hours1.length;  i++){
+        this.hours2.push(this.hours1[i].map((eleme) => {
+          return eleme['busy'];
+        }));
+        this.barChartData = [{data : this.hours2[i]}];
+      }
+      console.log(this.hours2);
+      });
   }
   editExperience() {
     this.editExp = !this.editExp;
